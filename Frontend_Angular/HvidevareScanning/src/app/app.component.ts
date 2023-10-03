@@ -8,7 +8,7 @@ import axios from 'axios';
 })
 export class AppComponent {
   title = 'HvidevareScanning';
-  url:string = 'https://dogapi.dog/api/facts';
+  url:string = 'https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/hisense-washing-machine-wf3q1043bw-white/624062';
   result:string = '';
   results:Array<string> = [
     '1',
@@ -19,8 +19,12 @@ export class AppComponent {
 
   async getHtmlFromSite() {
     try {
-      const response = await axios.get(this.url);
-      this.result = JSON.stringify(response.data.facts[0]);
+       const response = await axios.post("http://localhost:3000/scrape", {
+        website: this.url,
+        
+  });
+      console.log(response.data);
+      this.result = JSON.stringify(response.data);
     } catch (error:any) {
       console.error('Error fetching users:', error.message);
     }
