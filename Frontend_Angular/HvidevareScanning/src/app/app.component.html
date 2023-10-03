@@ -1,0 +1,13 @@
+<div>
+  <h1>Playground</h1>
+  <input [(ngModel)]="url">
+  <div *ngIf="url.length;"> 
+    <span>Link: </span>
+    <span>{{ url }}</span>
+    <button (click)="getHtmlFromSite()">Search</button>
+  </div>
+  <div>
+    <h2>Result</h2>
+    <p>{{ result }}</p>
+  </div>
+</div>
