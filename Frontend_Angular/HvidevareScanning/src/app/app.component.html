@@ -1,13 +1,25 @@
-<div>
-  <h1>Playground</h1>
+<div id="search-container">
+  <h1>Hvidevare scanning</h1>
   <input [(ngModel)]="url">
-  <div *ngIf="url.length;"> 
-    <span>Link: </span>
-    <span>{{ url }}</span>
-    <button (click)="getHtmlFromSite()">Search</button>
+  <button (click)="getHtmlFromSite()">Search</button>
+</div>
+
+<div *ngIf="result.length" id="result-container">
+  <h2>Results</h2>
+  <div class="result-container">
+    <div *ngFor="let item of results" class="result">
+      <h3>Lorem ipsum</h3>
+      <p>{{ result }}</p>
+    </div>
   </div>
-  <div>
-    <h2>Result</h2>
-    <p>{{ result }}</p>
+</div>
+
+<div id="result-container">
+  <h2>Old results</h2>
+  <div class="result-container">
+    <div *ngFor="let item of results" class="result">
+      <h3>Lorem ipsum</h3>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam aut similique exercitationem, tenetur mollitia doloremque at suscipit iure dolore libero, quae dolorum dolorem reprehenderit autem a incidunt distinctio molestias quam eaque tempora inventore ab veritatis laboriosam nam. Beatae quas eum molestias officiis corporis quibusdam quis amet similique doloremque voluptatum! Autem.</p>
+    </div>
   </div>
 </div>

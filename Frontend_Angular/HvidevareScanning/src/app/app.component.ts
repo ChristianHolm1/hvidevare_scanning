@@ -8,8 +8,14 @@ import axios from 'axios';
 })
 export class AppComponent {
   title = 'HvidevareScanning';
-  url:string = '';
+  url:string = 'https://dogapi.dog/api/facts';
   result:string = '';
+  results:Array<string> = [
+    '1',
+    '2',
+    '3',
+    '4',
+  ]
 
   async getHtmlFromSite() {
     try {
