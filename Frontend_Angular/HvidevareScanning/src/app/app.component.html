@@ -4,11 +4,12 @@
   <button (click)="getHtmlFromSite()">Search</button>
 </div>
 
-<div id="result-container">
+<div *ngIf="product.title" id="result-container">
   <h2>Resultat</h2> 
   <div class="result-container">
     <div class="result">
       <h3>{{ product.title }}</h3>
+      <img src="{{ product.image }}" alt="Product image" width="200px">
       <p *ngFor="let item of product.specs">{{ item.key }}: {{ item.value }}</p>
     </div>
   </div>

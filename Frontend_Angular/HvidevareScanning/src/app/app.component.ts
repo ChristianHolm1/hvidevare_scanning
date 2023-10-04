@@ -21,12 +21,12 @@ export class AppComponent {
   
   async getHtmlFromSite() {
     try {
+      this.clearResults()
       const response = await axios.post("http://localhost:3000/scrape", {
         website: this.url,
       });
-      console.log(response.data)
-      console.log(this.product)
       this.product.title = response.data.title;
+      this.product.image = response.data.image;
       for (const key in response.data.specs) {
         if (response.data.specs.hasOwnProperty(key)) {
           this.product.specs.push({ key, value: response.data.specs[key] });
@@ -35,6 +35,11 @@ export class AppComponent {
     } catch (error:any) {
       console.error('Error fetching users:', error.message);
     }
+  }
+
+  clearResults() {
+    this.product.title = '';
+    this.product.specs = [];
   }
 }
 
