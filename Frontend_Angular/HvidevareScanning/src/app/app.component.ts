@@ -10,12 +10,6 @@ export class AppComponent {
   title = 'HvidevareScanning';
   url:string = 'https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/hisense-washing-machine-wf3q1043bw-white/624062';
   result:string = '';
-  results:Array<string> = [
-    '1',
-    '2',
-    '3',
-    '4',
-  ]
 
   async getHtmlFromSite() {
     try {
