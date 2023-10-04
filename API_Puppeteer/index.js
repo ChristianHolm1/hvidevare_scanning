@@ -64,17 +64,17 @@ async function scrape(website) {
 }
 
 function fetchTitle($) {
-  const productTitle = $(`head > title`).text();
+  const productTitle = $(`.product-title`).text();
   scrapedList['title'] = productTitle;
 }
 
 function fetchPrice($) {
-  const productPrice = $(`.box__price`).text();
+  const productPrice = $(`.buy-box__price > span:nth-child(1) > span:nth-child(1)`).text();
   scrapedList['price'] = productPrice;
 }
 
 function fetchImage($) {
-  const productImage = $(`#main > ng-component > div > div > section:nth-child(3) > div > div.pdp__media-intro.pdp__media-intro--icons.sticky.stuck > div.pdp__media > elk-product-media > div > div > elk-product-media-viewer > elk-carousel > div > swiper > div > div.swiper-slide.ng-star-inserted.swiper-slide-active > img`).attr('src');
+  const productImage = $(`div.hide-for-large > div:nth-child(1) > elk-product-media:nth-child(1) > div:nth-child(1) > div:nth-child(2) > elk-product-media-viewer:nth-child(1) > elk-carousel:nth-child(1) > div:nth-child(1) > swiper:nth-child(1) > div:nth-child(1) > div:nth-child(1) > img:nth-child(2)`).prop('src');
   scrapedList['image'] = productImage;
 }
 
