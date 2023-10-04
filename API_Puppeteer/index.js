@@ -70,8 +70,12 @@ function fetchData($) {
 
 let selectorList = [
   'Produkttype',
+  'Type vaskemaskine',
   'Energimærke',
-  'Højde (inkl. emballage)'
+  'Højde (inkl. emballage)',
+  'Bredde (cm)',
+  'Dybde (cm)',
+  'Vægt (kg)'
 ]
 
 let scrapedList = {
