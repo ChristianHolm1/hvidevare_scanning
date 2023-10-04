@@ -62,7 +62,7 @@ async function scrape(website) {
 
 function fetchData($) {
   selectorList.forEach(element => {
-    const productTypeElement = $(`.spec-attributes__cell--name:contains('${element}')`);
+    const productTypeElement = $(`.spec-attributes__cell--name:contains('${element}')`).first();
     const productType = productTypeElement.next('.spec-attributes__cell--value').text();
     scrapedList[element] = productType;
   });
@@ -71,6 +71,7 @@ function fetchData($) {
 let selectorList = [
   'Produkttype',
   'Energimærke',
+  'Højde (inkl. emballage)'
 ]
 
 let scrapedList = {

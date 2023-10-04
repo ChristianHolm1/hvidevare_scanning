@@ -5,10 +5,11 @@
 </div>
 
 <div *ngIf="result.length" id="result-container">
-  <h2>Results</h2>
+  <h2>Results</h2> 
   <div class="result-container">
-    <div class="result">
-      <p>{{ result }}</p>
+    <div *ngFor="let item of results" class="result">
+      <h3>Lorem ipsum</h3>
+      <pre>{{ result }}</pre>
     </div>
   </div>
 </div>

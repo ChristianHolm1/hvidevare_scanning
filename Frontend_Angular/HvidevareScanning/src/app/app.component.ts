@@ -18,7 +18,7 @@ export class AppComponent {
         
   });
       console.log(response.data);
-      this.result = JSON.stringify(response.data);
+      this.result = JSON.stringify(response.data, null, 1).replace(/[\{\},"]/g, '') // Remove curly braces, commas, and double quotes
     } catch (error:any) {
       console.error('Error fetching users:', error.message);
     }
