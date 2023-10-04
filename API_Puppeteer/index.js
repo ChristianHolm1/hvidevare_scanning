@@ -49,11 +49,29 @@ async function scrape(website) {
     await page.goto(website);
     const content = await page.content();
     const $ = cheerio.load(content);
-    const scrape = $('elk-product-specifications').text();
+
+    fetchData($);
     await browser.close();
-    return scrape;
+
+    return scrapedList;
   } catch (error) {
     console.error(error);
-    throw error; // Re-throw the error to be caught by the route handler
+    throw error;
   }
+}
+
+function fetchData($) {
+  selectorList.forEach(element => {
+    const productTypeElement = $(`.spec-attributes__cell--name:contains('${element}')`);
+    const productType = productTypeElement.next('.spec-attributes__cell--value').text();
+    scrapedList[element] = productType;
+  });
+}
+
+let selectorList = [
+  'Produkttype',
+  'Energimærke',
+]
+
+let scrapedList = {
 }
