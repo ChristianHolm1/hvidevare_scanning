@@ -4,12 +4,12 @@
   <button (click)="getHtmlFromSite()">Search</button>
 </div>
 
-<div *ngIf="result.length" id="result-container">
-  <h2>Results</h2> 
+<div id="result-container">
+  <h2>Resultat</h2> 
   <div class="result-container">
-    <div *ngFor="let item of results" class="result">
-      <h3>Lorem ipsum</h3>
-      <pre>{{ result }}</pre>
+    <div class="result">
+      <h3>{{ product.title }}</h3>
+      <p *ngFor="let item of product.specs">{{ item.key }}: {{ item.value }}</p>
     </div>
   </div>
 </div>

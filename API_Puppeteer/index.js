@@ -50,6 +50,9 @@ async function scrape(website) {
     const content = await page.content();
     const $ = cheerio.load(content);
 
+    fetchTitle($);
+    fetchPrice($);
+    fetchImage($);
     fetchData($);
     await browser.close();
 
@@ -60,11 +63,26 @@ async function scrape(website) {
   }
 }
 
+function fetchTitle($) {
+  const productTitle = $(`head > title`).text();
+  scrapedList['title'] = productTitle;
+}
+
+function fetchPrice($) {
+  const productPrice = $(`.box__price`).text();
+  scrapedList['price'] = productPrice;
+}
+
+function fetchImage($) {
+  const productImage = $(`#main > ng-component > div > div > section:nth-child(3) > div > div.pdp__media-intro.pdp__media-intro--icons.sticky.stuck > div.pdp__media > elk-product-media > div > div > elk-product-media-viewer > elk-carousel > div > swiper > div > div.swiper-slide.ng-star-inserted.swiper-slide-active > img`).attr('src');
+  scrapedList['image'] = productImage;
+}
+
 function fetchData($) {
   selectorList.forEach(element => {
     const productTypeElement = $(`.spec-attributes__cell--name:contains('${element}')`).first();
     const productType = productTypeElement.next('.spec-attributes__cell--value').text();
-    scrapedList[element] = productType;
+    scrapedList.specs[element] = productType
   });
 }
 
@@ -79,4 +97,5 @@ let selectorList = [
 ]
 
 let scrapedList = {
+  specs: {}
 }
