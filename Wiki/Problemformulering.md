@@ -13,15 +13,11 @@ Der mangler effektive automatiserede værktøjer til at indsamle og evaluere inf
 
 #### Hovedspørgsmål:
 
--   Hvordan kan en web scraper udvikles til at indsamle og evaluere energimærker samt tekniske specifikationer fra produktsider på online forhandleres hjemmesider og præsentere samt gemme disse data til fremtidig brug?
+-   Hvordan kan en web scraper udvikles til at indsamle tekniske specifikationer fra produktsider på online forhandleres hjemmesider og præsentere dataen.
     
 
 #### Underspørgsmål:
 -   Hvordan kan en web scraper effektivt indsamle og strukturere tekniske specifikationer som energiklasse, spænding, lydniveau og vægt fra disse hjemmesider?
-
--   Hvordan kan en web scraper designes og implementeres til at identificere tilstedeværelsen af energimærker på produktsider på online forhandleres hjemmesider?  
-    
--   Hvordan kan de indsamlede data organiseres og gemmes i en hensigtsmæssig databasestruktur eller filformat?
     
 -   Hvordan kan man sikre, at de indsamlede data forbliver opdaterede over tid, og hvordan kan scraperen vedligeholdes?
     
