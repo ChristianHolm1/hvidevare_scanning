@@ -10,9 +10,8 @@ import { ApiPuppeteerService } from '../shared/services/api-puppeteer.service';
 export class SearchComponent {
   constructor(private apiPuppeteerService: ApiPuppeteerService) {}
   url:string = 'https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/hisense-washing-machine-wf3q1043bw-white/624062';
-  product:Product = new Product("", "", "", []);
+  productList: Product[] = [];
   async callAPI(url:string) {
-    this.product = await this.apiPuppeteerService.getHtmlFromSite(url);
-    console.log(this.product.title);
+    await this.apiPuppeteerService.getHtmlFromSite(url);
   }
 }
