@@ -100,4 +100,3 @@ let scrapedList = {
   specs: {}
 }
 
-Oliver siger det virker sådan!
