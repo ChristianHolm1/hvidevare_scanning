@@ -1,10 +1,6 @@
-<div id="search-container">
-  <h1>Hvidevare scanning</h1>
-  <input [(ngModel)]="url">
-  <button (click)="getHtmlFromSite()">Search</button>
-</div>
+<app-search></app-search>
 
-<div *ngIf="product.title" id="result-container">
+<!-- <div *ngIf="product.title" id="result-container">
   <h2>Resultat</h2> 
   <div class="result-container">
     <div class="result">
@@ -13,4 +9,4 @@
       <p *ngFor="let item of product.specs">{{ item.key }}: {{ item.value }}</p>
     </div>
   </div>
-</div>
+</div> -->
