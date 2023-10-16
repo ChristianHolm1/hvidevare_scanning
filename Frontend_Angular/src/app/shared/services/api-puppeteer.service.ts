@@ -11,6 +11,7 @@ export class ApiPuppeteerService {
   productList: Product[] = [];
   async getHtmlFromSite(url: string) {
     try {
+      this.productList = [];
       const response = await axios.post('http://localhost:3000/scrape', {
         website: url,
       });
@@ -25,6 +26,7 @@ export class ApiPuppeteerService {
       }
       this.productList.push(product)
       this.productList.push(product)
+      
 
       ProductContainerComponent.ProductList = this.productList;
     } catch (error: any) {

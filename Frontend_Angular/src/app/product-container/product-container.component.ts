@@ -8,12 +8,12 @@ import { Product } from '../shared/classes/product';
 })
 export class ProductContainerComponent {
   static ProductList:Product[] = [];
-  size:Product[] = [];
+  productList:Product[] = [];
 
-  get staticProductList() {
+  get staticProductList() { 
     if(ProductContainerComponent.ProductList.length) {
-      this.size = ProductContainerComponent.ProductList;
-      return ProductContainerComponent.ProductList;
+      this.productList = ProductContainerComponent.ProductList;
+      return "";
     }
     else {
       return "";

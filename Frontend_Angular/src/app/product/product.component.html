@@ -1,1 +1,13 @@
-<p>product works!</p>
+<div class="result">
+    <h3>{{ product.title }}</h3>
+    <img [src]="product.image" alt="Product image" width="200px">
+    <p>{{ product.price }}</p>
+
+    <ul>
+        <ng-container *ngFor="let spec of product.specs">
+            <li *ngIf="spec.value">
+                {{ spec.key }}: {{ spec.value }}
+            </li>
+        </ng-container>
+    </ul>
+</div>

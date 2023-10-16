@@ -1,0 +1,12 @@
+#result-container {
+    margin-top: 50px;
+    .result-container {
+        display: flex;
+        gap: 10px;
+        @media (max-width: 900px) {
+            flex-direction: column;
+        }
+        flex-wrap: wrap;
+        width: 100%;
+    }
+}
