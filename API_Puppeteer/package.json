@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc --outDir src",
-    "test": "tsc --outDir src && cd src && node Elgiganten.js"
+    "test": "tsc && cd lib/domain/scrapers && node ElgigantenOld.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.32",
+    "@types/puppeteer": "^7.0.4",
     "typescript": "^5.2.2"
   },
   "description": ""

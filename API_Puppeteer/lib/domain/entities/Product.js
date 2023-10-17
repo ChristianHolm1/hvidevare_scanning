@@ -12,14 +12,14 @@ class Product {
     }
     toString() {
         return `Product Information:
-        Title: ${this.title}
-        Price: ${this.price}
-        Rating: ${this.rating}
-        Image: ${this.productImage}
-        Link: ${this.productLink}
-        Energy Image: ${this.productEnergyImg}
-        Specifications:
-        ----------------------------------`;
+    Title: ${this.title}
+    Price: ${this.price}
+    Rating: ${this.rating}
+    Image: ${this.productImage}
+    Link: ${this.productLink}
+    Energy Image: ${this.productEnergyImg}
+    Specifications:
+    ----------------------------------`;
     }
 }
 exports.Product = Product;
