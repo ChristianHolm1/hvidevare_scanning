@@ -1,19 +1,12 @@
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-import cheerio from 'cheerio';
+import { Product } from './Product';
 
 const puppeteerOptions = {
-    headless: false,
+    headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
 };
 puppeteer.use(StealthPlugin());
-
-
-async function init(website:string) {
-    let url = website;
-    
-    
-}
 
 async function GetRawProducts(website: string) {
   const browser = await puppeteer.launch(puppeteerOptions);
@@ -46,38 +39,49 @@ async function GetRawProducts(website: string) {
     await scrollDownAndLoadMore();
     previousProductCount = currentProductCount;
   }
-  const products = await page.evaluate(() => {
+  const productDetails = await page.evaluate(() => {
     const productTiles = document.querySelectorAll('div.product-tile.ng-star-inserted');
-    return Array.from(productTiles, (tile) => {
-      const productName = tile.querySelector('a.product-name')?.textContent?.trim() || '';
-      const productPrice = tile.querySelector('span.price__value')?.textContent?.trim() || '';
-      const productRating = tile.querySelector('span.rating__score')?.textContent?.trim() || '0 Anmeldelser';
-      const productImage = tile.querySelector('img.product-tile__image')?.getAttribute('src') || '';
-      const productLink = tile.querySelector('a.product-tile__link')?.getAttribute('href') || 'No link available';
-      const productEngImg = tile.querySelector('img.energy-img')?.getAttribute('src') || 'No eng img available';
+    const products = [];
 
-      return {
-        name: productName,
-        price: productPrice,
-        rating: productRating,
-        image: productImage,
-        link: `https://www.elgiganten.dk${productLink}`,
-        productEngImg,
-      };
-    });
+    for (const tile of productTiles) {
+        const productName = tile.querySelector('a.product-name')?.textContent?.trim() || '';
+        const productPrice = tile.querySelector('span.price__value')?.textContent?.trim() || '';
+        const productRating = tile.querySelector('span.rating__score')?.textContent?.trim() || '0 Anmeldelser';
+        const productImage = tile.querySelector('img.product-tile__image')?.getAttribute('src') || '';
+        const productLink = tile.querySelector('a.product-tile__link')?.getAttribute('href') || 'No link available';
+        const productEngImg = tile.querySelector('img.energy-img')?.getAttribute('src') || 'No eng img available';
+        products.push({
+          name: productName,
+          price: productPrice,
+          rating: productRating,
+          image: productImage,
+          link: `https://www.elgiganten.dk${productLink}`,
+          productEngImg,
+        });
+    }
+
+    return products;
   });
-
-  console.log('Product Details:');
-  console.log(products);
-  console.log(`Total Products: ${products.length}`);
-
   await browser.close();
+  
+  const products: Product[] = productDetails.map((productData) => new Product(
+    productData.name,
+    productData.price,
+    productData.rating,
+    productData.image,
+    productData.link,
+    productData.productEngImg
+));
+
+console.log('Product Details:');
+    for (const product of products) {
+        console.log(product.toString());
+    }
+    console.log(`Total Products: ${products.length}`);
+
+
+
 }
-
-async function GetRawProducts2(website: string) {
-    const $ = cheerio.load(website);
-    const productDivs = $('div.data-swiper-slide-index').html();
-    return productDivs ? "Found" : "Not found";
-  }
-
   GetRawProducts('https://www.elgiganten.dk/hvidevarer/vask-tor')
+
+ 

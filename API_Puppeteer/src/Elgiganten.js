@@ -14,17 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const puppeteer_extra_1 = __importDefault(require("puppeteer-extra"));
 const puppeteer_extra_plugin_stealth_1 = __importDefault(require("puppeteer-extra-plugin-stealth"));
-const cheerio_1 = __importDefault(require("cheerio"));
+const Product_1 = require("./Product");
 const puppeteerOptions = {
-    headless: false,
+    headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
 };
 puppeteer_extra_1.default.use((0, puppeteer_extra_plugin_stealth_1.default)());
-function init(website) {
-    return __awaiter(this, void 0, void 0, function* () {
-        let url = website;
-    });
-}
 function GetRawProducts(website) {
     return __awaiter(this, void 0, void 0, function* () {
         const browser = yield puppeteer_extra_1.default.launch(puppeteerOptions);
@@ -52,37 +47,35 @@ function GetRawProducts(website) {
             yield scrollDownAndLoadMore();
             previousProductCount = currentProductCount;
         }
-        const products = yield page.evaluate(() => {
+        const productDetails = yield page.evaluate(() => {
+            var _a, _b, _c, _d, _e, _f, _g, _h, _j;
             const productTiles = document.querySelectorAll('div.product-tile.ng-star-inserted');
-            return Array.from(productTiles, (tile) => {
-                var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+            const products = [];
+            for (const tile of productTiles) {
                 const productName = ((_b = (_a = tile.querySelector('a.product-name')) === null || _a === void 0 ? void 0 : _a.textContent) === null || _b === void 0 ? void 0 : _b.trim()) || '';
                 const productPrice = ((_d = (_c = tile.querySelector('span.price__value')) === null || _c === void 0 ? void 0 : _c.textContent) === null || _d === void 0 ? void 0 : _d.trim()) || '';
                 const productRating = ((_f = (_e = tile.querySelector('span.rating__score')) === null || _e === void 0 ? void 0 : _e.textContent) === null || _f === void 0 ? void 0 : _f.trim()) || '0 Anmeldelser';
                 const productImage = ((_g = tile.querySelector('img.product-tile__image')) === null || _g === void 0 ? void 0 : _g.getAttribute('src')) || '';
                 const productLink = ((_h = tile.querySelector('a.product-tile__link')) === null || _h === void 0 ? void 0 : _h.getAttribute('href')) || 'No link available';
                 const productEngImg = ((_j = tile.querySelector('img.energy-img')) === null || _j === void 0 ? void 0 : _j.getAttribute('src')) || 'No eng img available';
-                return {
+                products.push({
                     name: productName,
                     price: productPrice,
                     rating: productRating,
                     image: productImage,
                     link: `https://www.elgiganten.dk${productLink}`,
                     productEngImg,
-                };
-            });
+                });
+            }
+            return products;
         });
-        console.log('Product Details:');
-        console.log(products);
-        console.log(`Total Products: ${products.length}`);
         yield browser.close();
-    });
-}
-function GetRawProducts2(website) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const $ = cheerio_1.default.load(website);
-        const productDivs = $('div.data-swiper-slide-index').html();
-        return productDivs ? "Found" : "Not found";
+        const products = productDetails.map((productData) => new Product_1.Product(productData.name, productData.price, productData.rating, productData.image, productData.link, productData.productEngImg));
+        console.log('Product Details:');
+        for (const product of products) {
+            console.log(product.toString());
+        }
+        console.log(`Total Products: ${products.length}`);
     });
 }
 GetRawProducts('https://www.elgiganten.dk/hvidevarer/vask-tor');
