@@ -3,7 +3,7 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import cheerio from 'cheerio';
 
 const puppeteerOptions = {
-    headless: true,
+    headless: false,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
 };
 puppeteer.use(StealthPlugin());

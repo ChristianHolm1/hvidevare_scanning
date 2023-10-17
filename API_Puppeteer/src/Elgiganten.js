@@ -16,7 +16,7 @@ const puppeteer_extra_1 = __importDefault(require("puppeteer-extra"));
 const puppeteer_extra_plugin_stealth_1 = __importDefault(require("puppeteer-extra-plugin-stealth"));
 const cheerio_1 = __importDefault(require("cheerio"));
 const puppeteerOptions = {
-    headless: true,
+    headless: false,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
 };
 puppeteer_extra_1.default.use((0, puppeteer_extra_plugin_stealth_1.default)());
