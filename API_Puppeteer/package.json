@@ -5,7 +5,9 @@
   "scripts": {
     "build": "tsc --outDir src",
     "test": "tsc && cd lib/domain/scrapers && node ElgigantenOld.js",
-    "server": "tsc && node lib/main.js"
+    "start": "concurrently \"npm run server\" \"npm run ng\"",
+    "server": "tsc && node lib/main.js",
+    "ng": "cd .. && cd frontend_angular && ng serve"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +25,7 @@
     "@types/cors": "^2.8.15",
     "@types/express": "^4.17.20",
     "@types/puppeteer": "^7.0.4",
+    "concurrently": "^8.2.1",
     "typescript": "^5.2.2"
   },
   "description": ""
