@@ -37,6 +37,7 @@ class ElgigantenScraper {
             const page = yield this.browser.newPage();
             yield page.setViewport({ width: 1000, height: 1332 });
             yield page.goto(website, { waitUntil: "networkidle2" });
+            yield page.waitForTimeout(3000); //virker når der er waitfortimeout på, ellers lukker min browser for hurtigt.
             this.scrollDownAndLoadMore(page);
             yield page.waitForSelector("button.coi-banner__accept");
             yield page.click("button.coi-banner__accept");
