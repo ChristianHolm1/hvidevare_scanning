@@ -1,0 +1,9 @@
+@use '@angular/material' as mat;
+
+$primary1: mat.define-light-theme((color: #21415e));
+$secondary1: mat.define-light-theme((color: #cadcec));
+
+@include mat.all-component-themes(
+    $primary1,
+    $secondary1
+);

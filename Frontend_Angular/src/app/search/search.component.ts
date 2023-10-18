@@ -11,7 +11,10 @@ export class SearchComponent {
   constructor(private apiPuppeteerService: ApiPuppeteerService) {}
   url:string = 'https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/hisense-washing-machine-wf3q1043bw-white/624062';
   productList: Product[] = [];
+  showSpinner:boolean = false;
   async callAPI(url:string) {
+    this.showSpinner = true;
     await this.apiPuppeteerService.getHtmlFromSite(url);
+    this.showSpinner = false;
   }
 }
