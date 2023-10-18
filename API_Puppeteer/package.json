@@ -1,19 +1,29 @@
 {
-  "name": "express",
+  "name": "api_puppeteer",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --outDir src",
+    "test": "tsc && cd lib/domain/scrapers && node ElgigantenOld.js",
+    "server": "tsc && node lib/main.js"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "puppeteer": "^21.3.6",
+    "puppeteer": "^21.3.8",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"
-  }
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.32",
+    "@types/cors": "^2.8.15",
+    "@types/express": "^4.17.20",
+    "@types/puppeteer": "^7.0.4",
+    "typescript": "^5.2.2"
+  },
+  "description": ""
 }
