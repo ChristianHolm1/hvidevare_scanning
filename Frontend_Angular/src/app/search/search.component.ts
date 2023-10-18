@@ -9,7 +9,7 @@ import { ApiPuppeteerService } from '../shared/services/api-puppeteer.service';
 })
 export class SearchComponent {
   constructor(private apiPuppeteerService: ApiPuppeteerService) {}
-  url:string = 'https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/hisense-washing-machine-wf3q1043bw-white/624062';
+  url:string = 'https://www.elgiganten.dk/hvidevarer/vask-tor?filter=PTLowestLevelNodeValue:Tørretumbler&filter=PTLowestLevelNodeValue:Vaskemaskine';
   productList: Product[] = [];
   showSpinner:boolean = false;
   async callAPI(url:string) {

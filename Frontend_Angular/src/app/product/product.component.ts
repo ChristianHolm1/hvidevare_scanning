@@ -7,6 +7,6 @@ import { Product } from '../shared/classes/product';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent {
-  @Input() product:Product = new Product("","","",[]);
+  @Input() product:Product = new Product('', '', '', "", "", "");
   
 }

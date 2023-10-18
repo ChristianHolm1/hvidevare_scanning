@@ -1,13 +1,18 @@
 <div class="result">
     <h3>{{ product.title }}</h3>
-    <img [src]="product.image" alt="Product image" width="200px">
-    <p>{{ product.price }}</p>
+    <a href="{{product.productLink}}" target="_blank"><img [src]="product.productImage" alt="Product image" width="200px"></a>
+    <img [src]="product.productEnergyImg" alt="EnergyLable" width="50px">
+    
 
     <ul>
-        <ng-container *ngFor="let spec of product.specs">
-            <li *ngIf="spec.value">
-                {{ spec.key }}: {{ spec.value }}
-            </li>
-        </ng-container>
+        <li>
+            {{ product.price }}
+        </li>
+        <li >
+            {{ product.rating}}
+
+            
+        </li>
+      
     </ul>
 </div>

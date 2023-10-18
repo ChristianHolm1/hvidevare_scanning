@@ -15,20 +15,21 @@ export class ApiPuppeteerService {
       const response = await axios.post('http://localhost:3000/scrape', {
         website: url,
       });
-      const product = new Product('', '', '', []);
-      product.title = response.data.title;
-      product.price = response.data.price;
-      product.image = response.data.image;
-      for (const key in response.data.specs) {
-        if (response.data.specs.hasOwnProperty(key)) {
-          product.specs.push({ key, value: response.data.specs[key] });
-        }
+      console.log(response.data);
+      for (const product of response.data) {
+        this.productList.push(
+          new Product(
+            product.title,
+            product.price,
+            product.rating,
+            product.productImage,
+            product.productLink,
+            product.productEnergyImg
+          )
+        );
       }
-      this.productList.push(product)
-      this.productList.push(product)
-      
-
       ProductContainerComponent.ProductList = this.productList;
+      console.log(ProductContainerComponent.ProductList);
     } catch (error: any) {
       console.error('Error fetching data:', error.message);
       throw error;
