@@ -1,7 +1,6 @@
 
 import { ScraperIF } from "../Interfaces/ScraperIF";
 import { Product } from "../entities/Product";
-
 import puppeteer from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
 
@@ -14,7 +13,7 @@ export class ElgigantenScraper implements ScraperIF{
 
     async initialize(): Promise<void> {
         this.browser = await puppeteer.launch({
-            headless: true,
+            headless: false,
             args: ["--no-sandbox", "--disable-setuid-sandbox"],
         });
         puppeteer.use(StealthPlugin());
@@ -25,8 +24,9 @@ export class ElgigantenScraper implements ScraperIF{
             throw new Error("Scraper is not initialized. Call initialize() first.");
         }
         const page = await this.browser.newPage();
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Safari/537.36');
         await page.setViewport({ width: 1000, height: 1332 });
-        await page.goto(website, { waitUntil: "networkidle2" });
+        await page.goto(website, { waitUntil: "networkidle2"});
         await page.waitForTimeout(3000); //virker når der er waitfortimeout på, ellers lukker min browser for hurtigt.
         this.scrollDownAndLoadMore(page);
         await page.waitForSelector("button.coi-banner__accept");

@@ -27,21 +27,15 @@ app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });
 app.post('/scrape', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    const website = req.body.website;
-    console.log(website); //virker
-    if (!website) {
-        const error = new Error('No website specified');
-        return res.status(400).send(error.message);
-    }
     try {
         yield nyScraper.initialize();
-        const scraped = yield nyScraper.scrapeProducts(website);
-        res.status(200).send(scraped);
+        console.log('Scraping products...');
+        const products = yield nyScraper.scrapeProducts(req.body.website);
+        res.json(products);
+        res.status(200);
     }
     catch (error) {
-        console.log(error);
-        res.status(500).send('Something went wrong');
+        console.error(error);
+        res.status(500).send('An error occurred while scraping');
     }
 }));

@@ -23,7 +23,7 @@ class ElgigantenScraper {
     initialize() {
         return __awaiter(this, void 0, void 0, function* () {
             this.browser = yield puppeteer_extra_1.default.launch({
-                headless: true,
+                headless: false,
                 args: ["--no-sandbox", "--disable-setuid-sandbox"],
             });
             puppeteer_extra_1.default.use((0, puppeteer_extra_plugin_stealth_1.default)());
@@ -35,6 +35,7 @@ class ElgigantenScraper {
                 throw new Error("Scraper is not initialized. Call initialize() first.");
             }
             const page = yield this.browser.newPage();
+            yield page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Safari/537.36');
             yield page.setViewport({ width: 1000, height: 1332 });
             yield page.goto(website, { waitUntil: "networkidle2" });
             yield page.waitForTimeout(3000); //virker når der er waitfortimeout på, ellers lukker min browser for hurtigt.
