@@ -1,0 +1,8 @@
+{{ staticProductList }}
+
+<div id="result-container">
+    <h2 *ngIf="productList.length">Results</h2>
+    <div class="result-container">
+        <app-product *ngFor="let product of productList" [product]="product"></app-product>
+    </div>
+</div>
