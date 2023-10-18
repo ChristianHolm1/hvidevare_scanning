@@ -15,6 +15,6 @@ export class SearchComponent {
   async callAPI(url:string) {
     this.showSpinner = true;
     await this.apiPuppeteerService.getHtmlFromSite(url);
-    //this.showSpinner = false;
+    this.showSpinner = false;
   }
 }
