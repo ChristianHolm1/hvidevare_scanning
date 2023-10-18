@@ -1,10 +1,6 @@
 h1 {
     text-align: center;
 }
-input {
-    width: 50%;
-    margin-bottom: 25px;
-}
 button {
     width: 25%;
 }
@@ -15,4 +11,14 @@ button {
 }
 mat-spinner {
     margin-top: 50px;
+}
+
+.form {
+    min-width: 150px;
+    max-width: 50%;
+    width: 100%;
+}
+  
+.form-input {
+    width: 100%;
 }
