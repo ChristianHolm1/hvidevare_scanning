@@ -22,11 +22,11 @@ class ElgigantenScraper {
     }
     initialize() {
         return __awaiter(this, void 0, void 0, function* () {
+            puppeteer_extra_1.default.use((0, puppeteer_extra_plugin_stealth_1.default)());
             this.browser = yield puppeteer_extra_1.default.launch({
-                headless: true,
+                headless: false,
                 args: ["--no-sandbox", "--disable-setuid-sandbox"],
             });
-            puppeteer_extra_1.default.use((0, puppeteer_extra_plugin_stealth_1.default)());
         });
     }
     scrapeProducts(website) {
@@ -34,14 +34,40 @@ class ElgigantenScraper {
             if (!this.browser) {
                 throw new Error("Scraper is not initialized. Call initialize() first.");
             }
+            this.products = [];
             const page = yield this.browser.newPage();
             yield page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Safari/537.36');
-            yield page.setViewport({ width: 1000, height: 1332 });
+            yield page.setViewport({ width: 1920, height: 1080 });
             yield page.goto(website, { waitUntil: "networkidle2" });
-            yield page.waitForTimeout(3000); //virker når der er waitfortimeout på, ellers lukker min browser for hurtigt.
+            //      await page.waitForTimeout(3000); //virker når der er waitfortimeout på, ellers lukker min browser for hurtigt.
             this.scrollDownAndLoadMore(page);
             yield page.waitForSelector("button.coi-banner__accept");
             yield page.click("button.coi-banner__accept");
+            let currentPage = 0;
+            let prevPage = 0;
+            while (true) {
+                currentPage++;
+                yield this.scrapeProducts1(page);
+                if (currentPage === prevPage) {
+                    break;
+                }
+                const nextPageLinkElement = yield page.$("a.pagination__arrow.kps-link[aria-label='Gå til næste side']");
+                console.log(nextPageLinkElement);
+                if (nextPageLinkElement) {
+                    yield nextPageLinkElement.click();
+                    yield page.waitForNavigation({ waitUntil: 'networkidle2' });
+                }
+                else {
+                    break;
+                }
+            }
+            yield this.browser.close();
+            console.log(`Scraped a total of ${this.products.length} products`);
+            return this.products;
+        });
+    }
+    scrapeProducts1(page) {
+        return __awaiter(this, void 0, void 0, function* () {
             let previousProductCount = 0;
             let currentProductCount = 0;
             while (true) {
@@ -75,11 +101,13 @@ class ElgigantenScraper {
                 }
                 return productsData;
             });
-            yield this.browser.close();
-            this.products = productDetails.map((product) => {
+            const products = productDetails.map((product) => {
                 return new Product_1.Product(product.name, product.price, product.rating, product.image, product.link, product.productEngImg);
             });
-            return this.products;
+            for (const product of products) {
+                this.products.push(product);
+            }
+            return products;
         });
     }
     close() {
@@ -92,9 +120,9 @@ class ElgigantenScraper {
     scrollDownAndLoadMore(page) {
         return __awaiter(this, void 0, void 0, function* () {
             yield page.evaluate(() => {
-                window.scrollBy(0, window.innerHeight);
+                window.scrollBy(0, window.innerHeight * 2);
             });
-            yield new Promise(resolve => setTimeout(resolve, 2000));
+            yield new Promise(resolve => setTimeout(resolve, 300));
         });
     }
 }
