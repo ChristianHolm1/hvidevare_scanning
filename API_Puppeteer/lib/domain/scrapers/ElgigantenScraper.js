@@ -17,69 +17,84 @@ const Product_1 = require("../entities/Product");
 const puppeteer_extra_1 = __importDefault(require("puppeteer-extra"));
 const puppeteer_extra_plugin_stealth_1 = __importDefault(require("puppeteer-extra-plugin-stealth"));
 class ElgigantenScraper {
-    constructor() {
-        this.products = [];
-    }
     initialize() {
         return __awaiter(this, void 0, void 0, function* () {
+            puppeteer_extra_1.default.use((0, puppeteer_extra_plugin_stealth_1.default)());
             this.browser = yield puppeteer_extra_1.default.launch({
-                headless: true,
+                headless: false,
                 args: ["--no-sandbox", "--disable-setuid-sandbox"],
             });
-            puppeteer_extra_1.default.use((0, puppeteer_extra_plugin_stealth_1.default)());
         });
     }
-    scrapeProducts(website) {
+    scrapeProducts(website, maxPages = 2) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!this.browser) {
                 throw new Error("Scraper is not initialized. Call initialize() first.");
             }
+            let currentPage = 1;
+            const products = [];
             const page = yield this.browser.newPage();
             yield page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Safari/537.36');
             yield page.setViewport({ width: 1000, height: 1332 });
             yield page.goto(website, { waitUntil: "networkidle2" });
-            yield page.waitForTimeout(3000); //virker når der er waitfortimeout på, ellers lukker min browser for hurtigt.
+            yield page.waitForTimeout(3000);
             this.scrollDownAndLoadMore(page);
             yield page.waitForSelector("button.coi-banner__accept");
             yield page.click("button.coi-banner__accept");
-            let previousProductCount = 0;
-            let currentProductCount = 0;
-            while (true) {
-                currentProductCount = (yield page.$$("div.product-tile.ng-star-inserted"))
-                    .length;
-                if (currentProductCount === previousProductCount) {
+            while (currentPage <= maxPages) {
+                const nextPageURL = `${website}/page-${currentPage}`;
+                yield page.goto(nextPageURL, { waitUntil: "networkidle2" });
+                yield page.waitForTimeout(3000);
+                this.scrollDownAndLoadMore(page);
+                let previousProductCount = 0;
+                let currentProductCount = 0;
+                while (true) {
+                    currentProductCount = (yield page.$$("div.product-tile.ng-star-inserted")).length;
+                    if (currentProductCount === previousProductCount) {
+                        break;
+                    }
+                    yield this.scrollDownAndLoadMore(page);
+                    previousProductCount = currentProductCount;
+                }
+                const productDetailsOnPage = yield page.evaluate(() => {
+                    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q;
+                    const productTiles = document.querySelectorAll("div.product-tile.ng-star-inserted");
+                    const productsData = [];
+                    for (const tile of productTiles) {
+                        const productName = (_c = (_b = (_a = tile.querySelector("a.product-name")) === null || _a === void 0 ? void 0 : _a.textContent) === null || _b === void 0 ? void 0 : _b.trim()) !== null && _c !== void 0 ? _c : "";
+                        const productPrice = (_f = (_e = (_d = tile.querySelector("span.price__value")) === null || _d === void 0 ? void 0 : _d.textContent) === null || _e === void 0 ? void 0 : _e.trim()) !== null && _f !== void 0 ? _f : "";
+                        const productRating = (_j = (_h = (_g = tile.querySelector("span.rating__score")) === null || _g === void 0 ? void 0 : _g.textContent) === null || _h === void 0 ? void 0 : _h.trim()) !== null && _j !== void 0 ? _j : "0 Anmeldelser";
+                        const productImage = (_l = (_k = tile.querySelector("img.product-tile__image")) === null || _k === void 0 ? void 0 : _k.getAttribute("src")) !== null && _l !== void 0 ? _l : "";
+                        const productLink = (_o = (_m = tile.querySelector("a.product-tile__link")) === null || _m === void 0 ? void 0 : _m.getAttribute("href")) !== null && _o !== void 0 ? _o : "No link available";
+                        const productEngImg = (_q = (_p = tile.querySelector("img.energy-img")) === null || _p === void 0 ? void 0 : _p.getAttribute("src")) !== null && _q !== void 0 ? _q : "No eng img available";
+                        productsData.push({
+                            name: productName,
+                            price: productPrice,
+                            rating: productRating,
+                            image: productImage,
+                            link: `https://www.elgiganten.dk${productLink}`,
+                            productEngImg,
+                        });
+                    }
+                    return productsData;
+                });
+                // Map the product details to Product objects and push them into the products array
+                products.push(...productDetailsOnPage.map((product) => {
+                    return new Product_1.Product(product.name, product.price, product.rating, product.image, `https://www.elgiganten.dk${product.link}`, // Use the absolute URL
+                    product.productEngImg);
+                }));
+                const nextPageButton = yield page.waitForSelector(".pagination__arrow.kps-link");
+                if (!nextPageButton) {
                     break;
                 }
-                yield this.scrollDownAndLoadMore(page);
-                previousProductCount = currentProductCount;
+                yield nextPageButton.click();
+                yield page.waitForNavigation({ waitUntil: "networkidle2" });
+                currentPage++;
+                yield page.waitForTimeout(2000);
             }
-            const productDetails = yield page.evaluate(() => {
-                var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q;
-                const productTiles = document.querySelectorAll("div.product-tile.ng-star-inserted");
-                const productsData = [];
-                for (const tile of productTiles) {
-                    const productName = (_c = (_b = (_a = tile.querySelector("a.product-name")) === null || _a === void 0 ? void 0 : _a.textContent) === null || _b === void 0 ? void 0 : _b.trim()) !== null && _c !== void 0 ? _c : "";
-                    const productPrice = (_f = (_e = (_d = tile.querySelector("span.price__value")) === null || _d === void 0 ? void 0 : _d.textContent) === null || _e === void 0 ? void 0 : _e.trim()) !== null && _f !== void 0 ? _f : "";
-                    const productRating = (_j = (_h = (_g = tile.querySelector("span.rating__score")) === null || _g === void 0 ? void 0 : _g.textContent) === null || _h === void 0 ? void 0 : _h.trim()) !== null && _j !== void 0 ? _j : "0 Anmeldelser";
-                    const productImage = (_l = (_k = tile.querySelector("img.product-tile__image")) === null || _k === void 0 ? void 0 : _k.getAttribute("src")) !== null && _l !== void 0 ? _l : "";
-                    const productLink = (_o = (_m = tile.querySelector("a.product-tile__link")) === null || _m === void 0 ? void 0 : _m.getAttribute("href")) !== null && _o !== void 0 ? _o : "No link available";
-                    const productEngImg = (_q = (_p = tile.querySelector("img.energy-img")) === null || _p === void 0 ? void 0 : _p.getAttribute("src")) !== null && _q !== void 0 ? _q : "No eng img available";
-                    productsData.push({
-                        name: productName,
-                        price: productPrice,
-                        rating: productRating,
-                        image: productImage,
-                        link: `https://www.elgiganten.dk${productLink}`,
-                        productEngImg,
-                    });
-                }
-                return productsData;
-            });
             yield this.browser.close();
-            this.products = productDetails.map((product) => {
-                return new Product_1.Product(product.name, product.price, product.rating, product.image, product.link, product.productEngImg);
-            });
-            return this.products;
+            console.log(products.length);
+            return products;
         });
     }
     close() {
@@ -94,7 +109,7 @@ class ElgigantenScraper {
             yield page.evaluate(() => {
                 window.scrollBy(0, window.innerHeight);
             });
-            yield new Promise(resolve => setTimeout(resolve, 2000));
+            yield new Promise((resolve) => setTimeout(resolve, 2000));
         });
     }
 }
