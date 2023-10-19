@@ -1,8 +1,11 @@
 <div class="result">
     <h3>{{ product.title }}</h3>
-    <a href="{{product.productLink}}" target="_blank"><img [src]="product.productImage" alt="Product image" width="200px"></a>
-    <img [src]="product.productEnergyImg" alt="EnergyLable" width="50px">
+    <div id="image-container">
+        <img [src]="product.productEnergyImg" alt="EnergyLable" height="40px" id="energy-lable">
+        <a href="{{product.productLink}}" target="_blank"><img [src]="product.productImage" alt="Product image" width="250px"></a>
+    </div>
     
+    <h4>Specifications</h4>
     <ul>
         <li>{{ product.price }}</li>
         <li>{{ product.rating}}</li>
