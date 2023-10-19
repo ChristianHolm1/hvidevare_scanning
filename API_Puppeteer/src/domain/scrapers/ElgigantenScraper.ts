@@ -13,7 +13,7 @@ export class ElgigantenScraper implements ScraperIF{
     async initialize(): Promise<void> {
       puppeteer.use(StealthPlugin());
         this.browser = await puppeteer.launch({
-            headless: false,
+            headless: true,
             args: ["--no-sandbox", "--disable-setuid-sandbox"],
         });
     }
@@ -22,6 +22,7 @@ export class ElgigantenScraper implements ScraperIF{
         if (!this.browser) {
             throw new Error("Scraper is not initialized. Call initialize() first.");
         }
+        const startTime = performance.now(); 
         this.products = [];
         const page = await this.browser.newPage();
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Safari/537.36');
@@ -40,7 +41,6 @@ export class ElgigantenScraper implements ScraperIF{
           break;
         }
         const nextPageLinkElement = await page.$("a.pagination__arrow.kps-link[aria-label='Gå til næste side']");
-        console.log(nextPageLinkElement);
         if (nextPageLinkElement) {
             await nextPageLinkElement.click();
             await page.waitForNavigation({ waitUntil: 'networkidle2' });
@@ -50,6 +50,10 @@ export class ElgigantenScraper implements ScraperIF{
         }
         await this.browser.close();
 
+        const endTime = performance.now(); // Capture the end time
+        const executionTime = (endTime - startTime) / 1000; // Calculate the execution time in seconds
+
+        console.log(`Scraping took ${executionTime} seconds.`);
         console.log(`Scraped a total of ${this.products.length} products`);
           return this.products;
     }
@@ -125,7 +129,7 @@ export class ElgigantenScraper implements ScraperIF{
       await page.evaluate(() => {
         window.scrollBy(0, window.innerHeight* 2);
       });
-        await new Promise(resolve => setTimeout(resolve, 300));
+        await new Promise(resolve => setTimeout(resolve, 200));
       }
 } 
 

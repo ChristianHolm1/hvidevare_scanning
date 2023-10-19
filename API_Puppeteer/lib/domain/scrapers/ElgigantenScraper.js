@@ -24,7 +24,7 @@ class ElgigantenScraper {
         return __awaiter(this, void 0, void 0, function* () {
             puppeteer_extra_1.default.use((0, puppeteer_extra_plugin_stealth_1.default)());
             this.browser = yield puppeteer_extra_1.default.launch({
-                headless: false,
+                headless: true,
                 args: ["--no-sandbox", "--disable-setuid-sandbox"],
             });
         });
@@ -34,6 +34,7 @@ class ElgigantenScraper {
             if (!this.browser) {
                 throw new Error("Scraper is not initialized. Call initialize() first.");
             }
+            const startTime = performance.now();
             this.products = [];
             const page = yield this.browser.newPage();
             yield page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Safari/537.36');
@@ -52,7 +53,6 @@ class ElgigantenScraper {
                     break;
                 }
                 const nextPageLinkElement = yield page.$("a.pagination__arrow.kps-link[aria-label='Gå til næste side']");
-                console.log(nextPageLinkElement);
                 if (nextPageLinkElement) {
                     yield nextPageLinkElement.click();
                     yield page.waitForNavigation({ waitUntil: 'networkidle2' });
@@ -62,6 +62,9 @@ class ElgigantenScraper {
                 }
             }
             yield this.browser.close();
+            const endTime = performance.now(); // Capture the end time
+            const executionTime = (endTime - startTime) / 1000; // Calculate the execution time in seconds
+            console.log(`Scraping took ${executionTime} seconds.`);
             console.log(`Scraped a total of ${this.products.length} products`);
             return this.products;
         });
@@ -122,7 +125,7 @@ class ElgigantenScraper {
             yield page.evaluate(() => {
                 window.scrollBy(0, window.innerHeight * 2);
             });
-            yield new Promise(resolve => setTimeout(resolve, 300));
+            yield new Promise(resolve => setTimeout(resolve, 200));
         });
     }
 }
