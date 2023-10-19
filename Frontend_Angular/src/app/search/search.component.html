@@ -6,6 +6,6 @@
           <input matInput placeholder="{{url}}" value="{{url}}">
         </mat-form-field>
     </form>
-    <button mat-raised-button color="primary" (click)="callAPI(url)">Search</button>
+    <button mat-raised-button (click)="callAPI(url)">Search</button>
     <mat-spinner *ngIf="showSpinner" color="primary"></mat-spinner>
 </div>
