@@ -8,7 +8,7 @@ let cache: {
   timestamp: number;
 } | null = null;
 
-const CACHE_TTL = 10 * 60 * 1000; // 10 minutes in milliseconds
+const CACHE_TTL = 120 * 60 * 1000; // 10 minutes in milliseconds
 
 const app = express();
 const port = 3000;
