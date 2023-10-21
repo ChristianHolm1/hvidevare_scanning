@@ -27,7 +27,7 @@ export class ElgigantenScraper implements ScraperIF{
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Safari/537.36');
         await page.setViewport({  width: 1920, height: 1080 });
         await page.goto(website, { waitUntil: "networkidle2"});
-  //      await page.waitForTimeout(3000); //virker når der er waitfortimeout på, ellers lukker min browser for hurtigt.
+        await page.waitForTimeout(3000); //virker når der er waitfortimeout på, ellers lukker min browser for hurtigt.
         this.scrollDownAndLoadMore(page);
         await page.waitForSelector("button.coi-banner__accept");
         await page.click("button.coi-banner__accept");

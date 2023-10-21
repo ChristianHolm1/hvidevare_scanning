@@ -17,7 +17,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 let nyScraper = new ElgigantenScraper_1.ElgigantenScraper();
 let cache = null;
-const CACHE_TTL = 120 * 60 * 1000; // 10 minutes in milliseconds
+const CACHE_TTL = 10 * 60 * 1000; // 10 minutes in milliseconds
 const app = (0, express_1.default)();
 const port = 3000;
 app.use((0, cors_1.default)());
