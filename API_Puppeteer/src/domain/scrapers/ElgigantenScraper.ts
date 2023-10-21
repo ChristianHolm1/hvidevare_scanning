@@ -13,7 +13,7 @@ export class ElgigantenScraper implements ScraperIF{
     async initialize(): Promise<void> {
       puppeteer.use(StealthPlugin());
         this.browser = await puppeteer.launch({
-            headless: false,
+            headless: true,
             args: ["--no-sandbox", "--disable-setuid-sandbox"],
         });
     }

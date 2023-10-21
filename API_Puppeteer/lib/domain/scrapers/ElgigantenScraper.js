@@ -24,7 +24,7 @@ class ElgigantenScraper {
         return __awaiter(this, void 0, void 0, function* () {
             puppeteer_extra_1.default.use((0, puppeteer_extra_plugin_stealth_1.default)());
             this.browser = yield puppeteer_extra_1.default.launch({
-                headless: false,
+                headless: true,
                 args: ["--no-sandbox", "--disable-setuid-sandbox"],
             });
         });
