@@ -16,6 +16,8 @@ const ElgigantenScraper_1 = require("./domain/scrapers/ElgigantenScraper");
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 let nyScraper = new ElgigantenScraper_1.ElgigantenScraper();
+let cache = null;
+const CACHE_TTL = 10 * 60 * 1000; // 10 minutes in milliseconds
 const app = (0, express_1.default)();
 const port = 3000;
 app.use((0, cors_1.default)());
@@ -28,11 +30,23 @@ app.listen(port, () => {
 });
 app.post('/scrape', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield nyScraper.initialize();
-        console.log('Scraping products...');
-        const products = yield nyScraper.scrapeProducts(req.body.website);
-        res.json(products);
-        res.status(200);
+        if (cache && Date.now() - cache.timestamp < CACHE_TTL) {
+            console.log('Returning cached data...');
+            res.json(cache.data);
+            res.status(200);
+        }
+        else {
+            yield nyScraper.initialize();
+            console.log('Scraping products...');
+            const products = yield nyScraper.scrapeProducts(req.body.website);
+            // Update the cache
+            cache = {
+                data: products,
+                timestamp: Date.now(),
+            };
+            res.json(products);
+            res.status(200);
+        }
     }
     catch (error) {
         console.error(error);
