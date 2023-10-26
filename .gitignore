@@ -9,6 +9,9 @@
 # Node
 .node_modules/
 node_modules/
+lib/
+/lib
+.lib
 /node_modules
 node_modules
 npm-debug.log
