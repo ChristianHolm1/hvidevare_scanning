@@ -1,10 +1,32 @@
+@import '../shared/styles/variables.scss';
+
+h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
 #energy-lable {
     position: absolute;
     right: 10px;
     top: 10px;
     
 }
+
 #image-container {
     position: relative;
     width: fit-content;
+}
+
+.result {
+    height: 100%;
+}
+
+.valid {
+    background-color: $custom-primary;
+}
+.old {
+    background-color: yellow;
+}
+.invalid {
+    background-color: red;
 }

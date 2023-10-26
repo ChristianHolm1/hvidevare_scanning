@@ -8,5 +8,10 @@ import { Product } from '../shared/classes/product';
 })
 export class ProductComponent {
   @Input() product:Product = new Product('', '', '', "", "", "");
-  
+
+  checkEnergyLabel() {
+    if (this.product.productEnergyImg == "No eng img available") {
+      document.getElementById('product')?.classList.add('old');
+    }
+  }
 }

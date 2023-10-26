@@ -1,11 +1,6 @@
 <div id="search-container">
     <h1>Hvidevare scanning</h1>
-    <form class="form">
-        <mat-form-field class="form-input">
-          <mat-label>Elgiganten link</mat-label>
-          <input matInput placeholder="{{url}}" value="{{url}}">
-        </mat-form-field>
-    </form>
-    <button mat-raised-button (click)="callAPI(url)">Search</button>
-    <mat-spinner *ngIf="showSpinner" color="primary"></mat-spinner>
+    <input [(ngModel)]="url">
+    <button (click)="callAPI(url)">Search</button>
+    <img src="../../assets/spinner.svg" alt="" *ngIf="showSpinner">
 </div>
