@@ -13,7 +13,6 @@ export class SearchComponent {
   productList: Product[] = [];
   showSpinner:boolean = false;
   async callAPI(url:string) {
-    console.log(url)
     this.showSpinner = true;
     await this.apiPuppeteerService.getHtmlFromSite(url);
     this.showSpinner = false;

@@ -30,3 +30,12 @@ app-product {
         width: auto;
     }
 }
+.valid {
+    background-color: $custom-secondary;
+}
+.old {
+    background-color: yellow;
+}
+.invalid {
+    background-color: red;
+}
