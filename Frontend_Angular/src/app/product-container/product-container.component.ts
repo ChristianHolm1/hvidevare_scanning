@@ -19,4 +19,44 @@ export class ProductContainerComponent {
       return "";
     }
   }
+
+  showInvalid(){
+    this.hideAll()
+    this.showElement("invalid");
+  }
+
+  showValid(){
+    this.hideAll()
+    this.showElement("valid");
+  }
+  showOld(){
+    this.hideAll()
+    this.showElement("old"); 
+  }
+
+  showAll(){
+    this.showElement("valid");
+    this.showElement("invalid");
+    this.showElement("old");
+  }
+  hideAll(){
+    this.hideElement("valid");
+    this.hideElement("invalid");
+    this.hideElement("old");
+  }
+
+  showElement(className:string){
+    let elements = document.getElementsByClassName(className);
+    for(let i=0; i<elements.length; i++){
+      elements[i].classList.remove("invisable");
+    }
+  }
+  hideElement(className:string){
+    let elements = document.getElementsByClassName(className);
+    for(let i=0; i<elements.length; i++){
+      elements[i].classList.add("invisable");
+    }
+  }
+  
+
 }
