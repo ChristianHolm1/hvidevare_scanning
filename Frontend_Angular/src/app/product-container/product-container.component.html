@@ -1,10 +1,12 @@
 {{ staticProductList }}
-<button (click)="showInvalid()">Only show invalid</button>
-<button (click)="showValid()">Only show valid</button>
-<button (click)="showOld()">Only show old</button>
-<button (click)="showAll()">All</button>
+
 <div id="result-container">
-    <h2 *ngIf="productList.length">Results</h2>
+    <div *ngIf="productList.length">
+        <button class="filter-button" (click)="showAll()">All</button>
+        <button class="filter-button" (click)="showValid()">Only show valid</button>
+        <button class="filter-button" (click)="showOld()">Only show old</button>
+        <button class="filter-button" (click)="showInvalid()">Only show invalid</button>
+    </div>
     <div class="result-container">
         <app-product *ngFor="let product of productList" [product]="product"></app-product>
     </div>

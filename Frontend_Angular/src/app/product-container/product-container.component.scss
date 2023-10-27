@@ -1,7 +1,7 @@
 @import '../shared/styles/variables.scss';
 
 #result-container {
-    margin-top: 50px;
+    margin-top: 90px;
     .result-container {
         display: flex;
         flex-wrap: wrap;
@@ -47,4 +47,17 @@ app-product {
     display: none;
 }
 
-
+.filter-button{
+    margin: 0px 20px 10px 0px;
+    padding: 10px;
+    border-radius: 4px;
+    //border: 1px solid $custom-accent;
+    background-color: $custom-primary;
+    color: white;
+    cursor: pointer;
+    &:hover{
+        background-color: $custom-primary;
+        opacity: 0.9;
+    }
+    
+}

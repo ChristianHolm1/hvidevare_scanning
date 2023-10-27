@@ -11,6 +11,11 @@ button {
     padding: 10px;
     border-radius: 4px;
     border: none;
+    cursor: pointer;
+    &:hover{
+        background-color: $custom-primary;
+        opacity: 0.9;
+    }
 }
 
 #search-container {
@@ -24,4 +29,11 @@ input {
     max-width: 1000px;
     width: 100%;
     margin-bottom: 10px;
+}
+.title-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
 }
