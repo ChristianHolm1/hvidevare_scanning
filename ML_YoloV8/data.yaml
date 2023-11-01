@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 2
+names: ['NewLabel', 'OldLabel']
+
+roboflow:
+  workspace: solita-project
+  project: energy-labels
+  version: 7
+  license: Private
+  url: https://app.roboflow.com/solita-project/energy-labels/7
