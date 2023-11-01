@@ -2,16 +2,13 @@
 datasets
 test
 train
-.png
-.txt
-.jpg
 valid
 args.yaml
 
-runs/detect/*/*.png
-runs/detect/*/*.jpg
-runs/detect/*/*.csv
-runs/detect/*/*.0
-runs/detect/*/*.avi
-runs/detect/*/*/*.onnx
-runs/detect/*/*/*last.pt
+*.png
+*.jpg
+*.csv
+*.0
+*.avi
+*.onnx
+*last.pt
