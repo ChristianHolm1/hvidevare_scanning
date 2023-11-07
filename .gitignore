@@ -48,3 +48,4 @@ testem.log
 .DS_Store
 Thumbs.db
 DB_Mongo/__pycache__/main.cpython-311.pyc
+DB_Mongo/__pycache__/main.cpython-312.pyc
