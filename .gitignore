@@ -47,3 +47,4 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+DB_Mongo/__pycache__/main.cpython-311.pyc
