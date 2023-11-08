@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from '../shared/classes/product';
-import { ApiPuppeteerService } from '../shared/services/api-puppeteer.service';
+import { ApiMongoService } from '../shared/services/api-mongo.service';
 
 @Component({
   selector: 'app-search',
@@ -8,13 +8,13 @@ import { ApiPuppeteerService } from '../shared/services/api-puppeteer.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
-  constructor(private apiPuppeteerService: ApiPuppeteerService) {}
-  url:string = 'https://www.elgiganten.dk/hvidevarer/vask-tor?filter=PTLowestLevelNodeValue:Tørretumbler&filter=PTLowestLevelNodeValue:Vaskemaskine';
+  constructor(private apiMongoService: ApiMongoService) {}
+  param:string = 'elgiganten';
   productList: Product[] = [];
   showSpinner:boolean = false;
-  async callAPI(url:string) {
+  async callAPI(param:string) {
     this.showSpinner = true;
-    await this.apiPuppeteerService.getHtmlFromSite(url);
+    await this.apiMongoService.getWebstoreProducts(param);
     this.showSpinner = false;
   }
 }

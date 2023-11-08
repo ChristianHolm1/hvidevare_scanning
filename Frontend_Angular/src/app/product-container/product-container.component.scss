@@ -54,10 +54,10 @@ app-product {
     //border: 1px solid $custom-accent;
     background-color: $custom-primary;
     color: white;
+    border: none;
     cursor: pointer;
     &:hover{
         background-color: $custom-primary;
         opacity: 0.9;
     }
-    
 }
