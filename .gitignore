@@ -42,7 +42,10 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+/DB_Mongo/config.json
 
 # System files
 .DS_Store
 Thumbs.db
+DB_Mongo/__pycache__/main.cpython-311.pyc
+DB_Mongo/__pycache__/main.cpython-312.pyc
