@@ -19,13 +19,12 @@ async def fetch_page_content(url, user_agent, semaphore):
             logging.info(f"Fetching URL: {url}")
             await page.goto(url, wait_until="networkidle", timeout=30000)
 
-            # Check for the cookie consent popup and accept it
+
             cookie_accept_button_selector = '.coi-banner__accept'
             if await page.query_selector(cookie_accept_button_selector):
                 await page.click(cookie_accept_button_selector)
-                  # Wait for the popup to be dismissed
-               # Capture a screenshot with the product title as the filename
-            title_selector = '.product-title'  # Adjust this selector to match the actual product title element
+
+            title_selector = '.product-title' 
             product_title = await page.text_content(title_selector)
             screenshot_filename = os.path.join(r"Hvidevare scanning\API_Scraper\PlaywrightScraper\ProductData\Elgiganten\Screenshots\Elgiganten", f"{product_title}.png")
             await page.screenshot(path=screenshot_filename)
@@ -38,10 +37,10 @@ async def fetch_page_content(url, user_agent, semaphore):
             return None
 
 
-# Function to parse product page
+
 from bs4 import BeautifulSoup
 
-# Function to parse product page
+
 def parse_product_page(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
     url = soup.find('link', rel='canonical').get('href')
@@ -54,7 +53,7 @@ def parse_product_page(html_content):
 
 
 
-# Asynchronous main function
+
 async def main():
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/119.0"
     scraped_data = []
@@ -62,11 +61,11 @@ async def main():
     with open(r'C:\Users\Lucas\OneDrive\Documents\Project Solita\Hvidevare scanning\API_Scraper\ScrapyScraper\data\ElgigantenSpider_20231114_082904.json', 'r') as file:
         data = json.load(file)
 
-    # Limit the number of concurrent tasks
-    concurrency_limit = 10  # Adjust this number as needed
+
+    concurrency_limit = 10 
     semaphore = asyncio.Semaphore(concurrency_limit)
 
-    # Create tasks
+ 
     scrape_tasks = [asyncio.create_task(fetch_page_content(item['url'], user_agent, semaphore)) for item in data]
 
     for task in tqdm.as_completed(scrape_tasks, total=len(scrape_tasks)):
@@ -78,10 +77,10 @@ async def main():
         except Exception as e:
             logging.error(f"Error processing task: {e}")
 
-    # Save the scraped data
+
     with open('scraped_data.json', 'w') as file:
         json.dump(scraped_data, file, indent=4)
 
-# Entry point for the asyncio program
+
 if __name__ == "__main__":
     asyncio.run(main())
