@@ -3,6 +3,24 @@
 h1 {
     text-align: center;
 }
+#elgiganten {
+    background-color: #041752;
+}
+#punkt1 {
+    background-color: #b7191e;
+}
+#elsalg {
+    background-color: #ea591a;
+}
+#power {
+    background-color: #ec6608;
+}
+.button-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 button {
     width: 250px;
     background-color: $custom-primary;
