@@ -25,22 +25,23 @@ export class ProductContainerComponent {
     this.showElement("invalid");
   }
 
-  showValid(){
+  showOldLabel(){
     this.hideAll()
-    this.showElement("valid");
+    this.showElement("old");
   }
-  showOld(){
+
+  showNewLabel(){
     this.hideAll()
-    this.showElement("old"); 
+    this.showElement("new");
   }
 
   showAll(){
-    this.showElement("valid");
+    this.showElement("new");
     this.showElement("invalid");
     this.showElement("old");
   }
   hideAll(){
-    this.hideElement("valid");
+    this.hideElement("new");
     this.hideElement("invalid");
     this.hideElement("old");
   }

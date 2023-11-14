@@ -24,7 +24,8 @@ export class ApiMongoService {
             product.rating,
             product.productImage,
             product.productLink,
-            product.productEnergyImg
+            product.productEnergyImg,
+            product.productLabel
           )
         );
       }

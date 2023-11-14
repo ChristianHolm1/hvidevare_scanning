@@ -7,6 +7,7 @@ export class Product implements ProductIF {
   productImage: string;
   productLink: string;  
   productEnergyImg: string;
+  productLabel: string;
 
   constructor(
     title: string,
@@ -15,6 +16,7 @@ export class Product implements ProductIF {
     productImage: string,
     productLink: string,
     productEnergyImg: string,
+    productLabel: string,
   ){
     this.title = title;
     this.price = price;
@@ -22,6 +24,7 @@ export class Product implements ProductIF {
     this.productImage = productImage;
     this.productLink = productLink;
     this.productEnergyImg = productEnergyImg;
+    this.productLabel = productLabel;
   }
 
   toString(): string {
@@ -32,6 +35,7 @@ export class Product implements ProductIF {
     Image: ${this.productImage}
     Link: ${this.productLink}
     Energy Image: ${this.productEnergyImg}
+    Product Label: ${this.productLabel}
     Specifications:
     ----------------------------------`;
   }

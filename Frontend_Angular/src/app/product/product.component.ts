@@ -10,40 +10,21 @@ export class ProductComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.checkEnergyLabel();
   }
-  @Input() product: Product = new Product('', '', '', "", "", "");
+  @Input() product: Product = new Product('', '', '', "", "", "", "");
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   checkEnergyLabel() {
-    switch (this.product.productEnergyImg) {
-      case "No eng img available":
+    switch (this.product.productLabel) {
+      case "old":
+        this.renderer.addClass(this.el.nativeElement, 'old');
+        break;
+        case "invalid":
         this.renderer.addClass(this.el.nativeElement, 'invalid');
         break;
-      case "https://www.elgiganten.dk/content/icon/energyscales/apppg-appp.svg":
-        this.renderer.addClass(this.el.nativeElement, 'old');
-        break;
-      case "https://www.elgiganten.dk/content/icon/energyscales/apppg-app.svg":
-        this.renderer.addClass(this.el.nativeElement, 'old');
-        break;
-      case "https://www.elgiganten.dk/content/icon/energyscales/apppg-ap.svg":
-        this.renderer.addClass(this.el.nativeElement, 'old');
-        break;
-      case "https://www.elgiganten.dk/content/icon/energyscales/apppg-a.svg":
-        this.renderer.addClass(this.el.nativeElement, 'old');
-        break;
-      case "https://www.elgiganten.dk/content/icon/energyscales/apppg-b.svg":
-        this.renderer.addClass(this.el.nativeElement, 'old');
-        break;
-      case "https://www.elgiganten.dk/content/icon/energyscales/apppg-c.svg":
-        this.renderer.addClass(this.el.nativeElement, 'old');
-        break;
-      case "https://www.elgiganten.dk/content/icon/energyscales/apppg-d.svg":
-        this.renderer.addClass(this.el.nativeElement, 'old');
-        break;
       default:
-        this.renderer.addClass(this.el.nativeElement, 'valid');
+        this.renderer.addClass(this.el.nativeElement, 'new');
         break;
-
     }
   }
 }

@@ -40,7 +40,7 @@ def predict_with_image(image):
         for result in results:
             boxes = result.boxes
             if len(boxes.cls) == 0:
-                class_labels.append("No label")
+                class_labels.append("invalid")
             else:
                 class_label_id = int(boxes.cls[0].item())
                 class_labels.append(result.names[class_label_id])
