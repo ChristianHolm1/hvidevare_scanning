@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="sidebar">
+        <div class="button-container">
+            <button id="dashboard">Frontpage</button>
+            <button (click)="callAPI('elgiganten')" id="elgiganten">Elgiganten</button>
+            <button (click)="callAPI('punkt1')" id="punkt1">Punkt1</button>
+            <button (click)="callAPI('elsalg')" id="elsalg">Elsalg</button>
+        </div>
+    </div>
+    <div class="content">
+        <app-frontpage></app-frontpage>
+        <!-- <div id="spinner">
+            <img src="../../assets/spinner.svg" alt="" *ngIf="showSpinner">
+        </div>
+        <app-product-container></app-product-container> -->
+    </div>
+</div>

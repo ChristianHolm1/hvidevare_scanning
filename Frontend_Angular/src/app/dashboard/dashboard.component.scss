@@ -1,0 +1,48 @@
+.container {
+    --sidebar-width:250px;
+    color:white;
+}
+.sidebar {
+    position:fixed;
+    top: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: #bcbcbc;
+    .button-container {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        padding: 1rem;
+    }
+    button {
+        background-color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        padding: 0.5rem;
+        color: black;
+        border: none;
+    }
+}
+.content {
+    margin: 1rem;
+    margin-left: calc(var(--sidebar-width) + 1rem);
+}
+#spinner {
+    text-align: center;
+}
+#dashboard {
+    margin-bottom: 2rem;
+}
+
+#elgiganten {
+    background-color: #041752ff;
+    color: white;
+}
+#punkt1 {
+    background-color: #b7191eff;
+    color: white;
+}
+#elsalg {
+    background-color: #ec6608ff;
+    color: white;
+}
