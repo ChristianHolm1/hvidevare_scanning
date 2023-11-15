@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Product } from '../classes/product';
 import { ProductContainerComponent } from 'src/app/product-container/product-container.component';
-import { UrlSegment } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +11,12 @@ export class ApiMongoService {
   constructor() { }
 
   productList: Product[] = [];
-  async getWebstoreProducts(param: string) {
+
+  async getWebstoreProducts(collectionName: string) {
     try {
       this.productList = [];
 
-      const response = await axios.get(`http://127.0.0.1:8000/${param}`)
+      const response = await axios.get(`http://127.0.0.1:8000/${collectionName}`);
       for (const product of response.data.products) {
         this.productList.push(
           new Product(
@@ -38,31 +38,29 @@ export class ApiMongoService {
     }
   }
 
-  elgigantenStatsList: number[] = [];
-  old: number = 0;
-  new: number = 0;
-  invalid: number = 0;
-
-  async getChartStats(): Promise<number[]> {
+  async getChartStats(collectionName: string): Promise<number[]> {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/elgiganten`)
+      const statsList: number[] = [0, 0, 0];
+
+      const response = await axios.get(`http://127.0.0.1:8000/${collectionName}`);
       for (const product of response.data.products) {
         switch (product.productLabel) {
-          case "old":
-            this.old++;
+          case 'old':
+            statsList[0]++;
             break;
-          case "new":
-            this.new++;
+          case 'new':
+            statsList[1]++;
             break;
-          case "invalid":
-            this.invalid++;
+          case 'invalid':
+            statsList[2]++;
             break;
         }
       }
-      this.elgigantenStatsList.push(this.old, this.new, this.invalid);
-      return this.elgigantenStatsList as number[];
+
+      return statsList;
     } catch (error: any) {
-      return error;
+      console.error('Error fetching chart stats:', error.message);
+      throw error;
     }
   } 
 }
