@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Chart from 'chart.js/auto';
 import { ApiMongoService } from '../shared/services/api-mongo.service';
 
 @Component({
@@ -7,25 +8,41 @@ import { ApiMongoService } from '../shared/services/api-mongo.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  elgiganten_chart: any;
+  bilka_chart: any;
+  whiteaway_chart: any;
+
   constructor(private apiMongoService: ApiMongoService) {}
-  param:string = 'elgiganten';
-  showSpinner:boolean = false;
-  async callAPI(param:string) {
-    this.viewProducts();
-    this.showSpinner = true;
-    await this.apiMongoService.getWebstoreProducts(param);
-    this.showSpinner = false;
+  
+  async initCharts(collectionName: string, canvasId: string) {
+    const list = await this.apiMongoService.getChartStats(collectionName);
+    const chart = new Chart(canvasId, {
+      type: 'pie',
+      data: {
+        labels: ['Old', 'New', 'Invalid'],
+        datasets: [
+          {
+            label: '# of Votes',
+            data: list,
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+
+    return chart;
   }
-  async viewProducts() {
-    let frontpage = document.getElementById('frontpage');
-    let products = document.getElementById('product-container')
-    frontpage?.classList.replace('show', 'hide');
-    products?.classList.replace('hide', 'show');
-  }
-  async viewDashboard() {
-    let frontpage = document.getElementById('frontpage');
-    let products = document.getElementById('product-container')
-    frontpage?.classList.replace('hide', 'show');
-    products?.classList.replace('show', 'hide');
+
+  async ngOnInit() {
+    this.elgiganten_chart = await this.initCharts('elgiganten', 'elgiganten_canvas');
+    this.bilka_chart = await this.initCharts('bilka', 'bilka_canvas');
+    this.whiteaway_chart = await this.initCharts('whiteaway', 'whiteaway_canvas');
   }
 }
