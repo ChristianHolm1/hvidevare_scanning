@@ -1,0 +1,9 @@
+{
+    "title_xpath": "//*[@id='main']/ng-component/div/div/section[1]/div/elk-product-header/h1",
+    "price_xpath": "//*[@id='buy-box']/div/elk-buy-box-telecom-offering/div/elk-price/span/span",
+    "energy_rating_xpath": "//*[@id='sustainability']/elk-component-loader-wrapper/elk-product-sustainability/elk-sustainability/div/div[2]/table/tr[4]/td[2]",
+    "varenummer_xpath": "xpath=//td[contains(text(), 'Producentens varenummer')]",
+    "button_xpath": "//*[@id='specifications']/elk-component-loader-wrapper/elk-product-specifications/elk-specifications/button",
+    "screenshot_path": "C:\\Users\\Lucas\\OneDrive\\Documents\\Project Solita\\Hvidevare scanning\\API_Scraper\\PlaywrightScraper\\ProductData\\Elgiganten\\Screenshots",
+    "cookie_file": "C:\\Users\\Lucas\\OneDrive\\Documents\\Project Solita\\Hvidevare scanning\\API_Scraper\\PlaywrightScraper\\BrowserData\\Cookies\\elgigantencookies.json"
+}

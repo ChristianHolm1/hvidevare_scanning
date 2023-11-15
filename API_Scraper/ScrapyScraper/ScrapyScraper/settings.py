@@ -15,8 +15,16 @@ SPIDER_MODULES = ["ScrapyScraper.spiders"]
 NEWSPIDER_MODULE = "ScrapyScraper.spiders"
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
+
+#DOWNLOAD_DELAY = 1
+
+#CONCURRENT_REQUESTS = 30
+#CONCURRENT_REQUESTS_PER_DOMAIN = 8
+
+RETRY_TIMES = 10  # Number of times to retry
+RETRY_HTTP_CODES = [429]  # List of HTTP codes to retry
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
