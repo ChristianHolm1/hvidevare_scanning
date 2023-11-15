@@ -1,185 +1,10 @@
 [
     {
-        "price": "6499.-",
-        "energy_rating": "A",
-        "varenummer": "WGG144ZTSN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/bosch-vaskemaskine-wgg144ztsn/609583",
-        "title": "Bosch Vaskemaskine WGG144ZTSN"
-    },
-    {
-        "price": "3499.-",
-        "energy_rating": "A",
-        "varenummer": "WM14N26EDN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/siemens-vaskemaskine-wm14n26edn/609590",
-        "title": "Siemens Vaskemaskine WM14N26EDN"
-    },
-    {
-        "price": "4749.-",
-        "energy_rating": "C",
-        "varenummer": "WAJ240L3SN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/bosch-washing_machines-waj240l3sn-hvid/609592",
-        "title": "Bosch Washing_machines WAJ240L3SN (Hvid)"
-    },
-    {
-        "price": "2777.-",
-        "energy_rating": "A",
-        "varenummer": "WF3Q1043BW",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/hisense-vaskemaskine-wf3q1043bw-white/624062",
-        "title": "Hisense vaskemaskine WF3Q1043BW (White)"
-    },
-    {
-        "price": "4888.-",
-        "energy_rating": "A",
-        "varenummer": "EW7F8661E7",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/electrolux-vaskemaskine-ew7f8661e7/611739",
-        "title": "Electrolux Vaskemaskine EW7F8661E7"
-    },
-    {
-        "price": "7999.-",
-        "energy_rating": "A",
-        "varenummer": "WG56B2ALDN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/siemens-vaskemaskine-wg56b2aldn-hvid/609586",
-        "title": "Siemens vaskemaskine WG56B2ALDN (Hvid)"
-    },
-    {
-        "price": "7999.-",
-        "energy_rating": "A",
-        "varenummer": "WG44G10ADN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/siemens-vaskemaskine-wg44g10adn-hvid/609585",
-        "title": "Siemens Vaskemaskine WG44G10ADN (Hvid)"
-    },
-    {
-        "price": "10999.-",
-        "energy_rating": "A",
-        "varenummer": "WG44B2ALDN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/siemens-vaskemaskine-wg44b2aldn-hvid/609587",
-        "title": "Siemens Vaskemaskine WG44B2ALDN (Hvid)"
-    },
-    {
-        "price": "10743.-",
-        "energy_rating": "B",
-        "varenummer": "WAXH2KLOSN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/bosch-washing_machines-waxh2klosn-hvid/609584",
-        "title": "Bosch Washing_machines WAXH2KLOSN (Hvid)"
-    },
-    {
-        "price": "13704.-",
-        "energy_rating": "A",
-        "varenummer": "WGB244ALSN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/bosch-vaskemaskine-wgb244alsn-hvid/609593",
-        "title": "Bosch Vaskemaskine WGB244ALSN (Hvid)"
-    },
-    {
-        "price": "4630.-",
-        "energy_rating": "B",
-        "varenummer": "WAJ280L2SN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/bosch-washing_machines-waj280l2sn-hvid/609581",
-        "title": "Bosch Washing_machines WAJ280L2SN (Hvid)"
-    },
-    {
-        "price": "9499.-",
-        "energy_rating": "A",
-        "varenummer": "WGG244FPSN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/bosch-vaskemaskine-wgg244fpsn-hvid/609579",
-        "title": "Bosch Vaskemaskine WGG244FPSN (Hvid)"
-    },
-    {
-        "price": "5999.-",
-        "energy_rating": "A",
-        "varenummer": "BWFT710419WB1",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/beko-vaskemaskine-bwft710419wb1/608647",
-        "title": "Beko vaskemaskine BWFT710419WB1"
-    },
-    {
-        "price": "3783.-",
-        "energy_rating": "B",
-        "varenummer": "WAJ240L2SN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/bosch-washing_machines-waj240l2sn-hvid/609582",
-        "title": "Bosch Washing_machines WAJ240L2SN (Hvid)"
-    },
-    {
-        "price": "3999.-",
-        "energy_rating": "A",
-        "varenummer": "BWFT7104110WB",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/beko-vaskemaskine-bwft7104110wb/608646",
-        "title": "Beko vaskemaskine BWFT7104110WB"
-    },
-    {
-        "price": "4499.-",
-        "energy_rating": "A",
-        "varenummer": "BWFT7104110MB",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/beko-vaskemaskine-bwft7104110mb/608643",
-        "title": "BEKO vaskemaskine BWFT7104110MB"
-    },
-    {
-        "price": "6199.-",
-        "energy_rating": "Ingen vurdering",
-        "varenummer": "859991660640",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/whirlpool-industri-vaskemaskine-859991660640/608639",
-        "title": "Whirlpool industri-vaskemaskine 859991660640"
-    },
-    {
-        "price": "7999.-",
-        "energy_rating": "A",
-        "varenummer": "WGG1440ASN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/bosch-vaskemaskine-wgg1440asn-hvid/609580",
-        "title": "Bosch Vaskemaskine WGG1440ASN (Hvid)"
-    },
-    {
-        "price": "3999.-",
-        "energy_rating": "B",
-        "varenummer": "EWTS7716X",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/beko-vaskemaskine-ewts7716x/608645",
-        "title": "BEKO vaskemaskine EWTS7716X"
-    },
-    {
-        "price": "5999.-",
-        "energy_rating": "A",
-        "varenummer": "BWFT710416WB1",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/beko-vaskemaskine-bwft710416wb1/608644",
-        "title": "Beko vaskemaskine BWFT710416WB1"
-    },
-    {
-        "price": "5999.-",
-        "energy_rating": "A",
-        "varenummer": "F4T2VYM1S",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/lg-vaskemaskine-f4t2vym1s/605695",
-        "title": "LG vaskemaskine F4T2VYM1S"
-    },
-    {
-        "price": "5499.-",
-        "energy_rating": "C",
-        "varenummer": "WAJ280E3SN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/bosch-vaskemaskine-waj280e3sn/608090",
-        "title": "Bosch vaskemaskine WAJ280E3SN"
-    },
-    {
         "price": "7499.-",
         "energy_rating": "A",
         "varenummer": "FV94ENS2WN",
         "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/lg-vaskemaskine-fv94ens2wn/604300",
         "title": "LG vaskemaskine FV94ENS2WN"
-    },
-    {
-        "price": "5999.-",
-        "energy_rating": "A",
-        "varenummer": "FV96JNS2WA",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/lg-vaskemaskine-fv96jns2wa/604301",
-        "title": "LG vaskemaskine FV96JNS2WA"
-    },
-    {
-        "price": "7999.-",
-        "energy_rating": "A",
-        "varenummer": "LR622A94Q",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/aeg-vaskemaskine-lr622a94q-hvid/604358",
-        "title": "AEG Vaskemaskine LR622A94Q (Hvid)"
-    },
-    {
-        "price": "9999.-",
-        "energy_rating": "A",
-        "varenummer": "FV94ENS2QA",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/lg-vaskemaskine-fv94ens2qa/604288",
-        "title": "LG vaskemaskine FV94ENS2QA"
     },
     {
         "price": "8999.-",
@@ -189,6 +14,13 @@
         "title": "LG vaskemaskine FV94ENS2BA"
     },
     {
+        "price": "9999.-",
+        "energy_rating": "A",
+        "varenummer": "FV94ENS2QA",
+        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/lg-vaskemaskine-fv94ens2qa/604288",
+        "title": "LG vaskemaskine FV94ENS2QA"
+    },
+    {
         "price": "3499.-",
         "energy_rating": "A",
         "varenummer": "FV34JNS0A1",
@@ -196,80 +28,17 @@
         "title": "LG vaskemaskine FV34JNS0A1"
     },
     {
-        "price": "2777.-",
-        "energy_rating": "A",
-        "varenummer": "WF3Q1043BW",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/hisense-vaskemaskine-wf3q1043bw-white/624062",
-        "title": "Hisense vaskemaskine WF3Q1043BW (White)"
-    },
-    {
-        "price": "3999.-",
-        "energy_rating": "A",
-        "varenummer": "WGG254AESN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/bosch-vaskemaskine-wgg254aesn-hvid/564666",
-        "title": "Bosch Vaskemaskine WGG254AESN (Hvid)"
-    },
-    {
-        "price": "1499.-",
-        "energy_rating": "D",
-        "varenummer": "L612WM23E",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/logik-vaskemaskine-l612wm23e/616044",
-        "title": "Logik vaskemaskine L612WM23E"
-    },
-    {
-        "price": "5999.-",
-        "energy_rating": "A",
-        "varenummer": "EW6F4541E3",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/electrolux-vaskemaskine-ew6f4541e3/612649",
-        "title": "Electrolux Vaskemaskine EW6F4541E3"
-    },
-    {
-        "price": "9499.-",
-        "energy_rating": "A",
-        "varenummer": "FV94ENS2QN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/lg-vaskemaskine-fv94ens2qn/604294",
-        "title": "LG vaskemaskine FV94ENS2QN"
-    },
-    {
-        "price": "5499.-",
-        "energy_rating": "A",
-        "varenummer": "WGG2540LSN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/bosch-vaskemaskine-wgg2540lsn-hvid/561510",
-        "title": "Bosch Vaskemaskine WGG2540LSN (Hvid)"
-    },
-    {
-        "price": "8999.-",
-        "energy_rating": "A",
-        "varenummer": "LR834E14E",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/aeg-vaskemaskine-lr834e14e/612648",
-        "title": "AEG Vaskemaskine LR834E14E"
+        "price": "3333.-",
+        "energy_rating": "A++",
+        "varenummer": "DHQA902U",
+        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/torretumbler-torreskab/torretumbler/hisense-dryer-dhqa902u-white/620195",
+        "title": "Hisense Dryer DHQA902U (White)"
     },
     {
         "price": "7999.-",
         "energy_rating": "A",
-        "varenummer": "WG54G20LDN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/siemens-vaskemaskine-wg54g20ldn-hvid/561509",
-        "title": "Siemens Vaskemaskine WG54G20LDN (Hvid)"
-    },
-    {
-        "price": "5499.-",
-        "energy_rating": "C",
-        "varenummer": "WM14N2E6DN",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/siemens-vaskemaskine-wm14n2e6dn-hvid/577017",
-        "title": "Siemens Vaskemaskine WM14N2E6DN (Hvid)"
-    },
-    {
-        "price": "2222.-",
-        "energy_rating": "A",
-        "varenummer": "EW2F3048E2",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/electrolux-vaskemaskine-ew2f3048e2/613461",
-        "title": "Electrolux Vaskemaskine EW2F3048E2"
-    },
-    {
-        "price": "1999.-",
-        "energy_rating": "B",
-        "varenummer": "L814WM23E",
-        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/logik-vaskemaskine-l814wm23e/616043",
-        "title": "Logik vaskemaskine L814WM23E"
+        "varenummer": "LR622A94Q",
+        "url": "https://www.elgiganten.dk/product/hvidevarer/vask-tor/vaskemaskine/aeg-vaskemaskine-lr622a94q-hvid/604358",
+        "title": "AEG Vaskemaskine LR622A94Q (Hvid)"
     }
 ]

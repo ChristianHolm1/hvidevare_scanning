@@ -49,3 +49,4 @@ testem.log
 Thumbs.db
 DB_Mongo/__pycache__/main.cpython-311.pyc
 DB_Mongo/__pycache__/main.cpython-312.pyc
+API_Scraper/PlaywrightScraper/ProductData/Elgiganten/Screenshots
