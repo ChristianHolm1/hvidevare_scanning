@@ -19,7 +19,7 @@ export class FrontpageComponent {
     const chart = new Chart(canvasId, {
       type: 'pie',
       data: {
-        labels: ['New', 'Old', 'Invalid'],
+        labels: ['Old', 'New', 'Invalid'],
         datasets: [
           {
             label: '# of Votes',
