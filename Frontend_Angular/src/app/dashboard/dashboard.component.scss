@@ -21,6 +21,7 @@
         padding: 0.5rem;
         color: black;
         border: none;
+        cursor: pointer;
     }
 }
 .content {
@@ -45,4 +46,10 @@
 #whiteaway {
     background-color: #006c5b;
     color: white;
+}
+.hide {
+    display: none;
+}
+.view {
+    display: block;
 }
