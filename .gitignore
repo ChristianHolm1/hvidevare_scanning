@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /bazel-out
+__pycache__/
 
 # Node
 .node_modules/
@@ -52,6 +53,4 @@ DB_Mongo/__pycache__/main.cpython-312.pyc
 DB_Mongo/__pycache__/main.cpython-312.pyc
 API_Scraper/PlaywrightScraper/ProductData/Elgiganten/Screenshots
 API_Scraper/PlaywrightScraper/ProductData/Bilka/Screenshots
-PI_Scraper/ScrapyScraper/ScrapyScraper/__pycache__/settings.cpython-311.pyc
-API_Scraper/PlaywrightScraper/__pycache__/scraper.cpython-311.pyc
-API_Scraper/PlaywrightScraper/__pycache__/scraper.cpython-311.pyc
+
