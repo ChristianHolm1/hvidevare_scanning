@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { ApiMongoService } from '../shared/services/api-mongo.service';
 
 @Component({
@@ -10,13 +10,14 @@ export class WrapperComponent {
   constructor(private apiMongoService: ApiMongoService) {}
   param:string = 'elgiganten';
   showSpinner:boolean = false;
+
   async callAPI(param:string) {
     this.viewProducts();
     this.showSpinner = true;
     await this.apiMongoService.getWebstoreProducts(param);
     this.showSpinner = false;
   }
-
+  
   async viewProducts() {
     let frontpage = document.getElementById('frontpage');
     let dashboard = document.getElementById('dashboard');
@@ -45,3 +46,4 @@ export class WrapperComponent {
     frontpage?.classList.replace('hide', 'show');
   }
 }
+
