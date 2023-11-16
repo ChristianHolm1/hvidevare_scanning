@@ -14,40 +14,11 @@ import pprint
 def load_json(filename):
     with open(filename, 'r') as file:
         return json.load(file)
-    
 
-# def find_images_based_on_title(data):
-#     data_to_ML_API = []
-#     path_to_images = 'API_Scraper/PlaywrightScraper/ProductData/Elgiganten/Screenshots'
-
-#     for item in data:
-#         item_title = item.get('title')
-#         image = find_image_by_name(path_to_images, item_title)
-        
-#         if image:
-#             data_to_ML_API.append({'files': image})
-#         else:
-#             pass
-
-#     return data_to_ML_API
-        
-# def find_image_by_name(folder_path, name):
-#     image_files = [f for f in os.listdir(folder_path) if f.lower().startswith(name.lower()) and f.lower().endswith(('.jpg', '.png', '.jpeg'))]
-
-#     if image_files:
-#         # Assuming there's only one matching image, return its file name without extension
-#         full_path = os.path.join(folder_path, image_files[0])
-#         with open(full_path, 'rb') as image_file:
-#             image_content = image_file.read()
-
-#         return image_content
-#     else:
-#         return None
-
-def send_data_to_ML_API():
+def send_data_to_ML_API(path_to_images):
     # Send data to ML API
-    ML_API_URL = 'http://localhost:5000/'
-    path_to_images = 'API_Scraper/PlaywrightScraper/ProductData/Elgiganten/Screenshots'
+    ML_API_URL = 'http://localhost:8080/predict_images'
+    
     try:
         # Create a list to store the files data
         files_data = []
@@ -59,7 +30,7 @@ def send_data_to_ML_API():
             # Ensure the item is a file (not a subdirectory)
             if os.path.isfile(file_path):
                 # Append each file as a tuple to the files_data list
-                files_data.append(('files', (file_name, open(file_path, 'rb'))))
+                files_data.append(('images', (file_name, open(file_path, 'rb'))))
 
         # Check if there are any files to send
         if not files_data:
@@ -77,21 +48,46 @@ def send_data_to_ML_API():
         print(f"HTTP error occurred: {http_err}")
     except requests.exceptions.RequestException as req_err:
         print(f"Request error occurred: {req_err}")
+    finally:
+        # Close the files
+        for file_tuple in files_data:
+            file_tuple[1][1].close()
     return response.json()
 
 def insert_label_on_data(data, result_from_ML):
     for item in data:
-        ###FIX THIS, SO THAT IT DOESN'T HAVE .JPG/.PNG IN THE END
-        title = item['title'] + '.png'
+        title = item['title']
         
-        # Check if the title exists in the energy_labels dictionary
-        if title in result_from_ML:
-            # Add a new field 'energy_label' to the product
-            
-            item['energy_label'] = result_from_ML[title]
+        # Check if the title exists in any of the dictionaries in result_from_ML
+        for ml_item in result_from_ML:
+            if title in ml_item:
+                # Extract the value for the title from the matching dictionary
+                label = ml_item[title][0]
+                # Add a new field 'energy_label' to the product
+                item['productLabel'] = label
         
     return data
-    
+
+
+async def delete_data_in_db(api_url, collection_name):
+    response = requests.delete(api_url + collection_name)
+    return response.status_code == 200
+  
+
+async def send_data_to_db(api_url,data, collection_name):
+    response = requests.post(api_url + collection_name, data=data)
+    return response.status_code == 201
+
+
+def delete_images_from_folder(path_to_images):
+    try:
+        for filename in os.listdir(path_to_images):
+            if os.path.isfile(os.path.join(path_to_images, filename)):
+                os.remove(os.path.join(path_to_images, filename))
+    except Exception as e:
+        print(e)
+        pass
+
 async def main():
     config_path = r'API_Scraper\PlaywrightScraper\Configs\ElgigantenConfig.json'
     config = load_json(config_path)
@@ -114,12 +110,28 @@ async def main():
         result = await task
         if result:
             scraped_data.append(result)
-            
-    #result_from_ML = send_data_to_ML_API()
+    
+    path_to_images = 'API_Scraper/PlaywrightScraper/ProductData/Elgiganten/Screenshots'
+    result_from_ML = send_data_to_ML_API(path_to_images)
     ### WHEN PUSHED, GET IT UPDATEDET TO THE NEW FAST API ML, AND CHANGE THE URL TO THE NEW ONE, SO THAT IT DOESN'T HAVE .JPG/.PNG IN THE END
-    #scraped_data = insert_label_on_data(scraped_data, result_from_ML)
-    #pp = pprint.PrettyPrinter(indent=4)
-    #pp.pprint(scraped_data)
+    scraped_data = insert_label_on_data(scraped_data, result_from_ML)
+    # pp = pprint.PrettyPrinter(indent=4)
+    # pp.pprint(scraped_data)
+    scraped_data = {'products': scraped_data}
+    formated_data = json.dumps(scraped_data)
+    # print(scraped_data)
+    # print(formated_data)
+    database_url = 'http://127.0.0.1:8000/'
+    collection_name = 'elgiganten'
+    # #Delete from db
+    await delete_data_in_db(database_url, collection_name)
+    # #send to db
+    
+    await send_data_to_db(database_url, formated_data, collection_name)
+    
+    #Delete images from folder
+    delete_images_from_folder(path_to_images)
+
 
     current_date = datetime.now().strftime("%Y-%m-%d")
 

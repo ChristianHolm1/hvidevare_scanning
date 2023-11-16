@@ -27,7 +27,8 @@ async def predict_images(images: List[UploadFile]):
         image_bytes = uploaded_file.file.read()
         image = Image.open(BytesIO(image_bytes))
         result = predict_with_image(image)
-        results.append({uploaded_file.filename: result})
+        file_without_extension = uploaded_file.filename.split('.')[0]
+        results.append({file_without_extension: result})
 
     return results
 
@@ -40,7 +41,7 @@ def predict_with_image(image):
         for result in results:
             boxes = result.boxes
             if len(boxes.cls) == 0:
-                class_labels.append("No label")
+                class_labels.append("invalid")
             else:
                 class_label_id = int(boxes.cls[0].item())
                 class_labels.append(result.names[class_label_id])
@@ -51,4 +52,4 @@ def predict_with_image(image):
 
 
 if __name__ == '__main__':
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8080)
