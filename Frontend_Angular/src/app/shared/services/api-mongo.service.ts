@@ -45,10 +45,10 @@ export class ApiMongoService {
       const response = await axios.get(`http://127.0.0.1:8000/${collectionName}`);
       for (const product of response.data.products) {
         switch (product.productLabel) {
-          case 'old':
+          case 'OldLabel':
             statsList[0]++;
             break;
-          case 'new':
+          case 'NewLabel':
             statsList[1]++;
             break;
           case 'invalid':
