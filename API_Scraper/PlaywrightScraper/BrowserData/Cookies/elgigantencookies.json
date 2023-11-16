@@ -1,0 +1,15 @@
+[
+    {
+        "domain": "www.elgiganten.dk",
+        "expirationDate": 1701163153,
+        "hostOnly": true,
+        "httpOnly": false,
+        "name": "CookieInformationConsent",
+        "path": "/",
+        "sameSite": "Lax",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "%7B%22website_uuid%22%3A%2284b86b51-f2fc-40c7-b909-1ebccc8888c7%22%2C%22timestamp%22%3A%222023-11-14T09%3A19%3A13.041Z%22%2C%22consent_url%22%3A%22https%3A%2F%2Fwww.elgiganten.dk%2F%22%2C%22consent_website%22%3A%22elgiganten.dk%22%2C%22consent_domain%22%3A%22www.elgiganten.dk%22%2C%22user_uid%22%3A%220791fad2-b330-4968-92be-471da516a609%22%2C%22consents_approved%22%3A%5B%22cookie_cat_necessary%22%5D%2C%22consents_denied%22%3A%5B%22cookie_cat_functional%22%2C%22cookie_cat_statistic%22%2C%22cookie_cat_marketing%22%2C%22cookie_cat_unclassified%22%5D%2C%22user_agent%22%3A%22Mozilla%2F5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F119.0.0.0%20Safari%2F537.36%22%7D"
+    }
+]

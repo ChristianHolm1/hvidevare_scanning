@@ -1,0 +1,44 @@
+[
+    {
+        "price": "1.799,-",
+        "energy_rating": "F",
+        "varenummer": "FIFTYCUBE",
+        "url": "https://bilka.whiteaway.dk/hvidevarer/koeleskab/fritstaaende-koeleskab/product/scandomestic-coca-cola-fiftycube/",
+        "title": "Scandomestic Coca-cola FiftyCube"
+    },
+    {
+        "price": "9.999,-",
+        "energy_rating": "C",
+        "varenummer": "DFI5344D",
+        "url": "https://bilka.whiteaway.dk/hvidevarer/opvaskemaskine/integrerbar-opvaskemaskine/product/asko-dfi5344d/",
+        "title": "ASKO DFI5344D"
+    },
+    {
+        "price": "3.999,-",
+        "energy_rating": "F",
+        "varenummer": "AGB419F1AW",
+        "url": "https://bilka.whiteaway.dk/hvidevarer/fryser/fryseskab/product/aeg-agb419f1aw/",
+        "title": "AEG AGB419F1AW"
+    },
+    {
+        "price": "10.895,-",
+        "energy_rating": "A",
+        "varenummer": "FSE76738P",
+        "url": "https://bilka.whiteaway.dk/hvidevarer/opvaskemaskine/integrerbar-opvaskemaskine/product/aeg-fse76738p/",
+        "title": "AEG FSE76738P"
+    },
+    {
+        "price": "5.430,-",
+        "energy_rating": "F",
+        "varenummer": "AGB625F5NW",
+        "url": "https://bilka.whiteaway.dk/hvidevarer/fryser/fryseskab/product/aeg-agb625f5nw/",
+        "title": "AEG AGB625F5NW"
+    },
+    {
+        "price": "4.999,-",
+        "energy_rating": "C",
+        "varenummer": "SN45ZW05CS",
+        "url": "https://bilka.whiteaway.dk/hvidevarer/opvaskemaskine/underbygningsopvaskemaskine/product/siemens-sn45zw05cs/",
+        "title": "Siemens SN45ZW05CS IQ500"
+    }
+]

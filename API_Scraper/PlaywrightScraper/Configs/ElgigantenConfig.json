@@ -1,0 +1,12 @@
+{
+    "title_xpath": "//*[@id='main']/ng-component/div/div/section[1]/div/elk-product-header/h1",
+    "price_xpath": "//*[@id='buy-box']/div/elk-buy-box-telecom-offering/div/elk-price/span/span",
+    "energy_rating_xpath": "//*[@id='sustainability']/elk-component-loader-wrapper/elk-product-sustainability/elk-sustainability/div/div[2]/table/tr[4]/td[2]",
+    "varenummer_xpath": "//td[contains(text(), 'Producentens varenummer')]/following-sibling::td/span",
+    "button_xpath": "//*[@id='specifications']/elk-component-loader-wrapper/elk-product-specifications/elk-specifications/button",
+    "product_img_link_xpath": "//body/div[2]/elk-app[1]/ng-component[1]/elk-base-template[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/div[2]/ng-component[1]/div[1]/div[1]/section[1]/div[1]/div[3]/div[1]/elk-product-media[1]/div[1]/div[1]/elk-product-media-viewer[1]/elk-carousel[1]/div[1]/swiper[1]/div[1]/div[1]/img[1]",
+    "screenshot_path": "API_Scraper\\PlaywrightScraper\\ProductData\\Elgiganten\\Screenshots",
+    "cookie_file": "API_Scraper\\PlaywrightScraper\\BrowserData\\Cookies\\elgigantencookies.json",
+    "load_state": "networkidle",
+    "productdata_path": "API_Scraper\\PlaywrightScraper\\ProductData\\Elgiganten\\Products\\scraped_data"
+}
