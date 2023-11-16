@@ -1,12 +1,16 @@
 # main.py
 from scraper import Scraper
 import asyncio
+from datetime import datetime
 import random
 import json
 import os
 import requests
 import base64
 import pprint
+
+
+
 def load_json(filename):
     with open(filename, 'r') as file:
         return json.load(file)
@@ -94,7 +98,7 @@ async def main():
     scraper = Scraper(config)
 
     user_agents = load_json(r'API_Scraper\PlaywrightScraper\BrowserData\Useragents.json')
-    data = load_json(r'API_Scraper\ScrapyScraper\data\test.json')
+    data = load_json(r'API_Scraper\ScrapyScraper\data\testelgiganten.json')
 
     concurrency_limit = 10
     semaphore = asyncio.Semaphore(concurrency_limit)
@@ -111,13 +115,15 @@ async def main():
         if result:
             scraped_data.append(result)
             
-    result_from_ML = send_data_to_ML_API()
+    #result_from_ML = send_data_to_ML_API()
     ### WHEN PUSHED, GET IT UPDATEDET TO THE NEW FAST API ML, AND CHANGE THE URL TO THE NEW ONE, SO THAT IT DOESN'T HAVE .JPG/.PNG IN THE END
-    scraped_data = insert_label_on_data(scraped_data, result_from_ML)
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(scraped_data)
+    #scraped_data = insert_label_on_data(scraped_data, result_from_ML)
+    #pp = pprint.PrettyPrinter(indent=4)
+    #pp.pprint(scraped_data)
 
-    with open(r'API_Scraper\PlaywrightScraper\ProductData\Elgiganten\Products\scraped_data.json', 'w') as file:
+    current_date = datetime.now().strftime("%Y-%m-%d")
+
+    with open(f"{config['productdata_path']}_{current_date}.json", 'w') as file:
         json.dump([content for content in scraped_data if content], file, indent=4)
 
 if __name__ == "__main__":

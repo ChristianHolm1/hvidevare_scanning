@@ -1,0 +1,50 @@
+[
+    {
+        "price": "1287.-",
+        "energy_rating": "D",
+        "varenummer": "Not available",
+        "product_img": "https://www.elgiganten.dk/image/dv_web_D180001002456717/EICO2733/eico-emhatte-2733--pdp_zoom-3000--pdp_main-540.jpg",
+        "url": "https://www.elgiganten.dk/product/hvidevarer/emhatte/eico-emhatte-2733/EICO2733",
+        "title": "Eico emh\u00e6tte 2733"
+    },
+    {
+        "price": "14987.-",
+        "energy_rating": "B",
+        "varenummer": "Not available",
+        "product_img": "https://www.elgiganten.dk/image/dv_web_D180001002455985/EICO4255/eico-wave-x-emhatte-4255--pdp_zoom-3000--pdp_main-540.jpg",
+        "url": "https://www.elgiganten.dk/product/hvidevarer/emhatte/eico-wave-x-emhatte-4255/EICO4255",
+        "title": "Eico Wave X emh\u00e6tte 4255"
+    },
+    {
+        "price": "5999.-",
+        "energy_rating": "B",
+        "varenummer": "2233",
+        "product_img": "https://www.elgiganten.dk/image/dv_web_D180001002455252/EICO2233/eico-emhatte-lol60x--pdp_zoom-3000--pdp_main-540.jpg",
+        "url": "https://www.elgiganten.dk/product/hvidevarer/emhatte/eico-emhatte-lol60x/EICO2233",
+        "title": "Eico emh\u00e6tte LOL60X"
+    },
+    {
+        "price": "1147.-",
+        "energy_rating": "D",
+        "varenummer": "Not available",
+        "product_img": "https://www.elgiganten.dk/image/dv_web_D180001002453953/EICO2732/eico-ch-my-60-ss-emhatte-2732--pdp_zoom-3000--pdp_main-540.jpg",
+        "url": "https://www.elgiganten.dk/product/hvidevarer/emhatte/eico-ch-my-60-ss-emhatte-2732/EICO2732",
+        "title": "Eico CH MY 60 SS emh\u00e6tte 2732"
+    },
+    {
+        "price": "10907.-",
+        "energy_rating": "B",
+        "varenummer": "2230",
+        "product_img": "https://www.elgiganten.dk/image/dv_web_D180001002454054/EICO2230/eico-emhatte-wave-2230--pdp_zoom-3000--pdp_main-540.jpg",
+        "url": "https://www.elgiganten.dk/product/hvidevarer/emhatte/eico-emhatte-wave-2230/EICO2230",
+        "title": "Eico emh\u00e6tte Wave 2230"
+    },
+    {
+        "price": "3777.-",
+        "energy_rating": "C",
+        "varenummer": "BDUN38641WD",
+        "product_img": "https://www.elgiganten.dk/image/dv_web_D1800010021076955/414072/beko-opvaskemaskine-bdun38641wd--pdp_zoom-3000--pdp_main-540.jpg",
+        "url": "https://www.elgiganten.dk/product/hvidevarer/opvaskemaskine/beko-opvaskemaskine-bdun38641wd/414072",
+        "title": "Beko opvaskemaskine BDUN38641WD"
+    }
+]

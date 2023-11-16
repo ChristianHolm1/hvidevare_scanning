@@ -1,12 +1,5 @@
 [
     {
-        "price": "10.895,-",
-        "energy_rating": "A",
-        "varenummer": "FSE76738P",
-        "url": "https://bilka.whiteaway.dk/hvidevarer/opvaskemaskine/integrerbar-opvaskemaskine/product/aeg-fse76738p/",
-        "title": "AEG FSE76738P"
-    },
-    {
         "price": "1.799,-",
         "energy_rating": "F",
         "varenummer": "FIFTYCUBE",
@@ -26,6 +19,13 @@
         "varenummer": "AGB419F1AW",
         "url": "https://bilka.whiteaway.dk/hvidevarer/fryser/fryseskab/product/aeg-agb419f1aw/",
         "title": "AEG AGB419F1AW"
+    },
+    {
+        "price": "10.895,-",
+        "energy_rating": "A",
+        "varenummer": "FSE76738P",
+        "url": "https://bilka.whiteaway.dk/hvidevarer/opvaskemaskine/integrerbar-opvaskemaskine/product/aeg-fse76738p/",
+        "title": "AEG FSE76738P"
     },
     {
         "price": "5.430,-",

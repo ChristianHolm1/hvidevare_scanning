@@ -1,0 +1,76 @@
+[
+  {
+    "name": "CookieInformationConsent",
+    "value": "%7B%22website_uuid%22%3A%22d8981761-2ee3-4dac-bfa4-a9740dc29520%22%2C%22timestamp%22%3A%222023-11-16T03%3A45%3A47.677Z%22%2C%22consent_url%22%3A%22https%3A%2F%2Fbilka.whiteaway.dk%2Fhvidevarer%2Fopvaskemaskine%2Funderbygningsopvaskemaskine%2Fproduct%2Fsiemens-sn45zw05cs%2F%22%2C%22consent_website%22%3A%22bilka.whiteaway.dk%22%2C%22consent_domain%22%3A%22bilka.whiteaway.dk%22%2C%22user_uid%22%3A%22b2d6dedf-54f3-486f-93e5-aaf2b7fe9e10%22%2C%22consents_approved%22%3A%5B%22cookie_cat_necessary%22%2C%22cookie_cat_functional%22%2C%22cookie_cat_statistic%22%2C%22cookie_cat_marketing%22%2C%22cookie_cat_unclassified%22%5D%2C%22consents_denied%22%3A%5B%5D%2C%22user_agent%22%3A%22Mozilla%2F5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F119.0.0.0%20Safari%2F537.36%20Edg%2F119.0.0.0%22%7D",
+    "domain": "bilka.whiteaway.dk",
+    "path": "/",
+    "expires": 1731642347,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "PHPSESSID",
+    "value": "244f1bd35a520521598c3a7dd3cf9e84",
+    "domain": "bilka.whiteaway.dk",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "cookie_test",
+    "value": "please_accept_for_session",
+    "domain": "bilka.whiteaway.dk",
+    "path": "/",
+    "expires": 1702698459.625382,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "orh_uuid",
+    "value": "6555907f4e5a7",
+    "domain": "bilka.whiteaway.dk",
+    "path": "/",
+    "expires": 1731642367.459752,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "cof_checkout_process",
+    "value": "step",
+    "domain": "bilka.whiteaway.dk",
+    "path": "/",
+    "expires": 1700711167.459764,
+    "httpOnly": false,
+    "secure": true
+  },
+  {
+    "name": "RelewiseId",
+    "value": "bc099692-b812-4627-b4be-864bb1c78a60",
+    "domain": "bilka.whiteaway.dk",
+    "path": "/",
+    "expires": 1700711259.034127,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "AWSALB",
+    "value": "ym6ktsF00/9UmgdZmoIJvlgkm2Hf7VXzh/bJDDOfhngVh4s/Xn3AVgNBbBW3W1SPfps4JwYOSlei7r9k07HLu8DIhtAnFn8+0FOrQuYCV9gU1Lw+9Dq4Cu2AUIwz",
+    "domain": "bilka.whiteaway.dk",
+    "path": "/",
+    "expires": 1700711259.625296,
+    "httpOnly": false,
+    "secure": false
+  },
+  {
+    "name": "_dd_s",
+    "value": "rum=0&expire=1700108558476",
+    "domain": "bilka.whiteaway.dk",
+    "path": "/",
+    "expires": 1700108565,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Strict"
+  }
+]
