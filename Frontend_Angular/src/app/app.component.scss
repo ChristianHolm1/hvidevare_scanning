@@ -1,3 +1,11 @@
 *{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.container {
+    --sidebar-width:250px;
+    color:white;
+}
+.content {
+    margin: 1rem;
+    margin-left: calc(var(--sidebar-width) + 1rem);
+}
