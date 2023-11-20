@@ -9,6 +9,7 @@ import { ProductContainerComponent } from './product-container/product-container
 import { ProductComponent } from './product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FrontpageComponent } from './frontpage/frontpage.component';
     ProductContainerComponent,
     ProductComponent,
     DashboardComponent,
-    FrontpageComponent
+    FrontpageComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

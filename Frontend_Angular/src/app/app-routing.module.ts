@@ -6,16 +6,16 @@ import { ProductContainerComponent } from './product-container/product-container
 
 const routes: Routes = [
   {
-    path: 'frontpage',
-    component: FrontpageComponent
-  },
-  {
     path: 'dashboard',
     component: DashboardComponent
   },
   {
     path: 'stores/:id',
     component: ProductContainerComponent
+  },
+  {
+    path: '**',
+    component: FrontpageComponent
   }
 ];
 

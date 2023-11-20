@@ -1,0 +1,35 @@
+.sidebar {
+    position:fixed;
+    top: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: #bcbcbc;
+    .button-container {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        padding: 1rem;
+    }
+    button {
+        background-color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        padding: 0.5rem;
+        color: black;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+#elgiganten {
+    background-color: #041752;
+    color: white;
+}
+#bilka {
+    background-color: #0091cf;
+    color: white;
+}
+#whiteaway {
+    background-color: #006c5b;
+    color: white;
+}
