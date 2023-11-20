@@ -9,7 +9,7 @@ import requests
 import base64
 import pprint
 
-
+website_name = 'elgiganten'
 
 def load_json(filename):
     with open(filename, 'r') as file:
@@ -89,12 +89,12 @@ def delete_images_from_folder(path_to_images):
         pass
 
 async def main():
-    config_path = r'API_Scraper\PlaywrightScraper\Configs\ElgigantenConfig.json'
+    config_path = 'API_Scraper\PlaywrightScraper\Configs\{name}Config.json'.format(name=website_name)
     config = load_json(config_path)
     scraper = Scraper(config)
 
     user_agents = load_json(r'API_Scraper\PlaywrightScraper\BrowserData\Useragents.json')
-    data = load_json(r'API_Scraper\ScrapyScraper\data\testelgiganten.json')
+    data = load_json('API_Scraper\ScrapyScraper\ScrapyData\{name}Spider\{name}Spider.json'.format(name=website_name))
 
     concurrency_limit = 10
     semaphore = asyncio.Semaphore(concurrency_limit)
@@ -111,7 +111,7 @@ async def main():
         if result:
             scraped_data.append(result)
     
-    path_to_images = 'API_Scraper/PlaywrightScraper/ProductData/Elgiganten/Screenshots'
+    path_to_images = 'API_Scraper/PlaywrightScraper/ProductData/{name}/Screenshots'.format(name=website_name)
     result_from_ML = send_data_to_ML_API(path_to_images)
     ### WHEN PUSHED, GET IT UPDATEDET TO THE NEW FAST API ML, AND CHANGE THE URL TO THE NEW ONE, SO THAT IT DOESN'T HAVE .JPG/.PNG IN THE END
     scraped_data = insert_label_on_data(scraped_data, result_from_ML)
@@ -122,7 +122,7 @@ async def main():
     # print(scraped_data)
     # print(formated_data)
     database_url = 'http://127.0.0.1:8000/'
-    collection_name = 'elgiganten'
+    collection_name = website_name
     # #Delete from db
     await delete_data_in_db(database_url, collection_name)
     # #send to db

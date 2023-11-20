@@ -10,7 +10,7 @@ import json
 app = FastAPI()
 
 # Define your YOLO model path
-PATH_TO_MODEL = "ML_YOLOV8/best.pt"
+PATH_TO_MODEL = "ML_YoloV8/best.pt"
 model = YOLO(PATH_TO_MODEL)
 
 

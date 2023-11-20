@@ -2,7 +2,7 @@ import subprocess
 import os
 from datetime import datetime
 
-spiders = ['ElgigantenSpider','bilkawhiteawaySpider']
+spiders = ['ElgigantenSpider','BilkaSpider']
 
 for spider in spiders:
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")

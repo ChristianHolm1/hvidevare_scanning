@@ -7,6 +7,6 @@
     "product_img_link_xpath": "//html[1]//body[1]//div[2]//div[2]//div[3]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//div[1]//img[1]",
     "screenshot_path": "API_Scraper\\PlaywrightScraper\\ProductData\\Bilka\\Screenshots",
     "cookie_file": "API_Scraper\\PlaywrightScraper\\BrowserData\\Cookies\\bilkacookies.json",
-    "load_state": "domcontentloaded",
+    "load_state": "networkidle",
     "productdata_path": "API_Scraper\\PlaywrightScraper\\ProductData\\Bilka\\Products\\BilkaScrapedProducts"
 }
