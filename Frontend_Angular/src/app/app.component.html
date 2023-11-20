@@ -1,1 +1,14 @@
-<app-wrapper></app-wrapper>
+<div class="container">
+    <div class="sidebar">
+        <div class="button-container">
+            <button [routerLink]="['frontpage']">Frontpage</button>
+            <button [routerLink]="['dashboard']">Dashboard</button>
+            <button (click)="callAPI('elgiganten')" [routerLink]="['stores', 'elgiganten']" id="elgiganten">Elgiganten</button>
+            <button (click)="callAPI('bilka')" [routerLink]="['stores', 'bilka']" id="bilka">Bilka</button>
+            <button (click)="callAPI('whiteaway')" [routerLink]="['stores', 'whiteaway']" id="whiteaway">Whiteaway</button>
+        </div>
+    </div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

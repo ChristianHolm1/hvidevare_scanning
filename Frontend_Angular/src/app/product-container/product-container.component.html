@@ -1,65 +1,7 @@
-<div class="wrapper">
-    <div class="stats-container">
-        <div class="stats-item">
-            <h2>Total websites</h2>
-            <p>3</p>
-        </div>
-        <div class="stats-item">
-            <h2>Total energimærker</h2>
-            <p>New: 507</p>
-            <p>Old: 33</p>
-            <p>Invalid: 2</p>
-        </div>
-        <div class="stats-item">
-            <h2>Sidste scrape</h2>
-            <p>16 timer</p>
-        </div>
-    </div>
-    <div class="canvas-container">
-        <div class="canvas-item">
-            <h2>Elgiganten</h2>
-            <canvas id="elgiganten_canvas_product">{{elgiganten_chart_product}}</canvas>
-            <h3>Stats</h3>
-            <ul>
-                <li>Total scraped: 202</li>
-                <li>New labels: 23</li>
-                <li>Old labels: 2</li>
-                <li>Invalid labels: 1</li>
-            </ul>
-            <h3>Score</h3>
-            <p>87/100</p>
-        </div>
-        <div class="canvas-item">
-            <h2>Bilka</h2>
-            <canvas id="bilka_canvas_product">{{bilka_chart_product}}</canvas>
-            <h3>Stats</h3>
-            <ul>
-                <li>Statistic #1</li>
-                <li>Statistic #2</li>
-                <li>Statistic #3</li>
-            </ul>
-            <h3>Score</h3>
-            <p>87/100</p>
-        </div>
-        <div class="canvas-item">
-            <h2>Whiteaway</h2>
-            <canvas id="whiteaway_canvas_product">{{whiteaway_chart_product}}</canvas>
-            <h3>Stats</h3>
-            <ul>
-                <li>Statistic #1</li>
-                <li>Statistic #2</li>
-                <li>Statistic #3</li>
-            </ul>
-            <h3>Score</h3>
-            <p>87/100</p>
-        </div>
-    </div>
-</div>
-
 {{ staticProductList }}
 
 <div id="result-container">
-    <div *ngIf="productList.length">
+    <div *ngIf="productList.length" class="filter-buttons">
         <button class="filter-button" (click)="showAll()">All</button>
         <button class="filter-button" (click)="showInvalid()">Show invalid labels</button>
         <button class="filter-button" (click)="showOldLabel()">Show old labels</button>

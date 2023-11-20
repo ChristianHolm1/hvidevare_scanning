@@ -9,7 +9,6 @@ import { ProductContainerComponent } from './product-container/product-container
 import { ProductComponent } from './product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
-import { WrapperComponent } from './wrapper/wrapper.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { WrapperComponent } from './wrapper/wrapper.component';
     ProductContainerComponent,
     ProductComponent,
     DashboardComponent,
-    FrontpageComponent,
-    WrapperComponent
+    FrontpageComponent
   ],
   imports: [
     BrowserModule,

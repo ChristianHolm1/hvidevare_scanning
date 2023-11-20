@@ -5,7 +5,7 @@
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        gap: 10px;
+        gap: 1rem;
         @media (max-width: 700px) {
             flex-direction: column;
         }
@@ -47,8 +47,8 @@ app-product {
 }
 
 .filter-button{
-    margin: 0px 20px 10px 0px;
-    padding: 10px;
+    margin: 0px 1rem 1rem 0px;
+    padding: 1rem;
     border-radius: 4px;
     background-color: white;
     color: black;
@@ -72,6 +72,7 @@ app-product {
     background-color: white;
     box-shadow: 0 0 5px #00000050;
     padding: 1rem;
+    margin-bottom: 1rem;
     border-radius: 4px;
     justify-content: space-between;
 
