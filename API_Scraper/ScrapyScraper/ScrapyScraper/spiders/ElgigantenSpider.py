@@ -1,7 +1,15 @@
 from scrapy.spiders import SitemapSpider
+from datetime import datetime
 
-class ElgigantenSitemapSpider(SitemapSpider):
+class ElgigantenSpider(SitemapSpider):
     name = 'ElgigantenSpider'
+    timestamp = datetime.now().strftime("%d-%m-%Y")
+
+    custom_settings = {
+        'FEED_FORMAT': 'json',
+        'FEED_URI': f'ScrapyScraper\ScrapyData\ElgigantenSpider\{name}_{timestamp}.json'
+    }
+
     allowed_domains = ['elgiganten.dk']
     sitemap_urls = ['https://www.elgiganten.dk/sitemaps/OCDKELG.pdp.index.sitemap.xml'] 
 
@@ -23,6 +31,9 @@ class ElgigantenSitemapSpider(SitemapSpider):
 
         # Rule for vinkøleskab
         ('/hvidevarer/vinkoler-vinkoleskab', 'parse_hvidevarer'),
+
+        #Rule to ignore 
+        (r'.*koletaske-og-koleboks.*', None)
 
 
     ]

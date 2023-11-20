@@ -6,8 +6,7 @@ import random
 import json
 import os
 import requests
-import base64
-import pprint
+
 
 website_name = 'elgiganten'
 
@@ -88,15 +87,15 @@ def delete_images_from_folder(path_to_images):
         print(e)
         pass
 
-async def main():
-    config_path = 'API_Scraper\PlaywrightScraper\Configs\{name}Config.json'.format(name=website_name)
+async def main(website: str,concurrency_limit: int):
+    timestamp = datetime.now().strftime("%d-%m-%Y")
+    config_path = f'API_Scraper\PlaywrightScraper\Configs\{website}Config.json'
     config = load_json(config_path)
     scraper = Scraper(config)
 
     user_agents = load_json(r'API_Scraper\PlaywrightScraper\BrowserData\Useragents.json')
-    data = load_json('API_Scraper\ScrapyScraper\ScrapyData\{name}Spider\{name}Spider.json'.format(name=website_name))
+    data = load_json(f'API_Scraper\ScrapyScraper\ScrapyData\{website}Spider\{website}Spider_{timestamp}.json')
 
-    concurrency_limit = 10
     semaphore = asyncio.Semaphore(concurrency_limit)
 
     scrape_tasks = []
@@ -115,28 +114,21 @@ async def main():
     result_from_ML = send_data_to_ML_API(path_to_images)
     ### WHEN PUSHED, GET IT UPDATEDET TO THE NEW FAST API ML, AND CHANGE THE URL TO THE NEW ONE, SO THAT IT DOESN'T HAVE .JPG/.PNG IN THE END
     scraped_data = insert_label_on_data(scraped_data, result_from_ML)
-    # pp = pprint.PrettyPrinter(indent=4)
-    # pp.pprint(scraped_data)
     scraped_data = {'products': scraped_data}
     formated_data = json.dumps(scraped_data)
-    # print(scraped_data)
-    # print(formated_data)
     database_url = 'http://127.0.0.1:8000/'
     collection_name = website_name
-    # #Delete from db
     await delete_data_in_db(database_url, collection_name)
-    # #send to db
-    
+ 
     await send_data_to_db(database_url, formated_data, collection_name)
     
-    #Delete images from folder
     delete_images_from_folder(path_to_images)
 
 
-    current_date = datetime.now().strftime("%Y-%m-%d")
+ 
 
     with open(f"{config['productdata_path']}_{current_date}.json", 'w') as file:
         json.dump([content for content in scraped_data if content], file, indent=4)
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main("elgiganten", 10))
