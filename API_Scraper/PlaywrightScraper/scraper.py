@@ -40,6 +40,8 @@ class Scraper:
 
                     await context.close()
                     await browser.close()
+                    if result['price'] == 'Not available':
+                        return None
                     return result
             except Exception as e:
                 logging.error(f"Error fetching URL {url}: {e}")

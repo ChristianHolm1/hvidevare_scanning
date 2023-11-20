@@ -1,4 +1,5 @@
 from scrapy.spiders import SitemapSpider
+import re
 
 class BilkaWhiteawaySiteMapSpider(SitemapSpider):
     name = 'bilkawhiteawaySpider'
@@ -6,7 +7,7 @@ class BilkaWhiteawaySiteMapSpider(SitemapSpider):
     sitemap_urls = ['https://bilka.whiteaway.dk/seo/sitemap-bilka-index.xml'] 
 
     sitemap_rules = [
-        ('/hvidevarer/', 'parse_hvidevarer'),
+        (r'/hvidevarer/.*?/product/', 'parse_hvidevarer'),
     ]
 
     def parse_hvidevarer(self, response):
