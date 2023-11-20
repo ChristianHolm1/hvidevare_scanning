@@ -1,8 +1,11 @@
 export interface ProductIF {     
     title: string;
     price: string;
-    rating?: string | "0";
-    productImage: string;
-    productLink: string;
-    productEnergyImg: string;
+    energy_rating?: string | "0";
+    varenummer: string;
+    product_img: string;
+    url: string;
+    productLabel: string;
+
+
 } 

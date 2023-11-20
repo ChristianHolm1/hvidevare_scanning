@@ -2,8 +2,8 @@
     <h3>{{ product.title }}</h3>
     <h2>{{ product.price }}</h2>
     <div id="image-container">
-        <img *ngIf="product.productEnergyImg != 'No eng img available'" [src]="product.productEnergyImg" alt="EnergyLable" height="40px" id="energy-lable">
-        <a href="{{product.productLink}}" target="_blank"><img [src]="product.productImage" alt="Product image" width="250px" id="product-image"></a>
+        <img *ngIf="product.productLabel != 'No eng img available'" [src]="product.productLabel" alt="EnergyLable" height="40px" id="energy-lable">
+        <a href="{{product.product_img}}" target="_blank"><img [src]="product.product_img" alt="Product image" width="250px" id="product-image"></a>
     </div>
     
     <!-- <h4>Specifications</h4>

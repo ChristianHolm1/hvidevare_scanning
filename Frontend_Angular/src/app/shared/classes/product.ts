@@ -3,27 +3,27 @@ import { ProductIF } from "../interfaces/ProductIF";
 export class Product implements ProductIF {
   title: string;
   price: string;
-  rating: string;
-  productImage: string;
-  productLink: string;  
-  productEnergyImg: string;
+  energy_rating: string;
+  varenummer: string;
+  product_img: string;
+  url: string;  
   productLabel: string;
 
   constructor(
     title: string,
     price: string,
-    rating: string,
-    productImage: string,
-    productLink: string,
-    productEnergyImg: string,
+    energy_rating: string,
+    varenummer: string,
+    product_img: string,
+    url: string,
     productLabel: string,
   ){
     this.title = title;
     this.price = price;
-    this.rating = rating;
-    this.productImage = productImage;
-    this.productLink = productLink;
-    this.productEnergyImg = productEnergyImg;
+    this.energy_rating = energy_rating;
+    this. varenummer =  varenummer;
+    this.product_img = product_img;
+    this.url = url;
     this.productLabel = productLabel;
   }
 
@@ -31,10 +31,10 @@ export class Product implements ProductIF {
     return `Product Information:
     Title: ${this.title}
     Price: ${this.price}
-    Rating: ${this.rating}
-    Image: ${this.productImage}
-    Link: ${this.productLink}
-    Energy Image: ${this.productEnergyImg}
+    Energy Rating: ${this.energy_rating}
+    Varenummer : ${this.varenummer}
+    Image: ${this.product_img}
+    Link: ${this.url}
     Product Label: ${this.productLabel}
     Specifications:
     ----------------------------------`;

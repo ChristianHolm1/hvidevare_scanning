@@ -22,10 +22,10 @@ export class ApiMongoService {
           new Product(
             product.title,
             product.price,
-            product.rating,
-            product.productImage,
-            product.productLink,
-            product.productEnergyImg,
+            product.energy_rating,
+            product.varenummer,
+            product.product_img,
+            product.url,
             product.productLabel
           )
         );
