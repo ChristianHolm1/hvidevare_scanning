@@ -6,7 +6,7 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-
+from datetime import datetime
 
 
 BOT_NAME = "ScrapyScraper"
@@ -17,8 +17,8 @@ NEWSPIDER_MODULE = "ScrapyScraper.spiders"
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
-
-#DOWNLOAD_DELAY = 0.25
+#LOG_LEVEL = 'INFO'
+#DOWNLOAD_DELAY = 1
 
 #CONCURRENT_REQUESTS = 30
 #CONCURRENT_REQUESTS_PER_DOMAIN = 8
@@ -57,10 +57,15 @@ RETRY_HTTP_CODES = [429]  # List of HTTP codes to retry
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    "ScrapyScraper.middlewares.ScrapyscraperDownloaderMiddleware": 543,
-#}
-
+DOWNLOADER_MIDDLEWARES = {
+    'ScrapyScraper.middlewares.RotateUserAgentMiddleware': 110,
+}
+FEEDS = {
+    f'ScrapyData/%(name)/%(name)_{datetime.now().strftime("%d-%m-%Y")}.json': {
+        'format': 'json',
+        'encoding': 'utf8',
+    },
+}
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
 #EXTENSIONS = {
@@ -82,7 +87,7 @@ AUTOTHROTTLE_START_DELAY = 0.1
 AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
-AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
+AUTOTHROTTLE_TARGET_CONCURRENCY = 2.0
 # Enable showing throttling stats for every response received:
 AUTOTHROTTLE_DEBUG = True
 

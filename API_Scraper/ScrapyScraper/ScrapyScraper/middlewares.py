@@ -4,6 +4,10 @@
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+import json
+import random
+from scrapy import signals
+import logging
 
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
@@ -101,3 +105,20 @@ class ScrapyscraperDownloaderMiddleware:
 
     def spider_opened(self, spider):
         spider.logger.info("Spider opened: %s" % spider.name)
+
+
+class RotateUserAgentMiddleware:
+    def __init__(self, user_agent_list):
+        self.user_agent_list = user_agent_list
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        with open(r'C:\Users\Lucas\OneDrive\Documents\Project Solita\Hvidevare scanning\API_Scraper\ScrapyScraper\ScrapyScraper\Useragents.json', 'r') as file:
+            user_agent_list = json.load(file)
+        return cls(user_agent_list)
+
+    def process_request(self, request, spider):
+        user_agent = random.choice(self.user_agent_list)
+        request.headers.setdefault('User-Agent', user_agent)
+
+        logging.info(f"User-Agent for request to {request.url}: {user_agent}")
