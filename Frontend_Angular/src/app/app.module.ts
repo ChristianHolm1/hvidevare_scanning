@@ -10,6 +10,8 @@ import { ProductComponent } from './product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ChartComponent } from './chart/chart.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     ProductComponent,
     DashboardComponent,
     FrontpageComponent,
-    SidebarComponent
+    SidebarComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,

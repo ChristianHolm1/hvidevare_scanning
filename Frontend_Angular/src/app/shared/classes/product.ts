@@ -16,7 +16,7 @@ export class Product implements ProductIF {
     varenummer: string,
     product_img: string,
     url: string,
-    productLabel: string,
+    productLabel: string = "invalid",
   ){
     this.title = title;
     this.price = price;

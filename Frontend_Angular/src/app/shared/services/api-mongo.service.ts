@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Product } from '../classes/product';
-import { ProductContainerComponent } from 'src/app/product-container/product-container.component';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiMongoService {
-
-  constructor() { }
-
+  private productListSubject: Subject<Product[]> = new Subject<Product[]>();
   productList: Product[] = [];
+  apiUrl: String = "http://127.0.0.1:8000";
+  constructor() { }
 
   async getWebstoreProducts(collectionName: string) {
     try {
       this.productList = [];
 
-      const response = await axios.get(`http://127.0.0.1:8000/${collectionName}`);
+      const response = await axios.get(`${this.apiUrl}/${collectionName}`);
       for (const product of response.data.products) {
         this.productList.push(
           new Product(
@@ -30,37 +30,24 @@ export class ApiMongoService {
           )
         );
       }
-      ProductContainerComponent.ProductList = this.productList;
-      console.log(ProductContainerComponent.ProductList);
+      this.updateProductList(); // Update the product list in the subject
     } catch (error: any) {
       console.error('Error fetching data:', error.message);
       throw error;
     }
   }
 
-  async getChartStats(collectionName: string): Promise<number[]> {
-    try {
-      const statsList: number[] = [0, 0, 0];
+  private updateProductList(): void {
+    this.productListSubject.next([...this.productList]); // Emit a new copy of the list
+  }
 
-      const response = await axios.get(`http://127.0.0.1:8000/${collectionName}`);
-      for (const product of response.data.products) {
-        switch (product.productLabel) {
-          case 'OldLabel':
-            statsList[0]++;
-            break;
-          case 'NewLabel':
-            statsList[1]++;
-            break;
-          case 'invalid':
-            statsList[2]++;
-            break;
-        }
-      }
+  sendProductList(): void {
+    this.updateProductList(); // Trigger update through the subject
+  }
 
-      return statsList;
-    } catch (error: any) {
-      console.error('Error fetching chart stats:', error.message);
-      throw error;
-    }
-  } 
+  getProductList(): Observable<Product[]> {
+    return this.productListSubject.asObservable();
+  }
+
+  
 }

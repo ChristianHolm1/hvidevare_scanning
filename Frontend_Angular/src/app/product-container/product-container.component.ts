@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from '../shared/classes/product';
-import Chart from 'chart.js/auto';
+import { Subscription } from 'rxjs';
 import { ApiMongoService } from '../shared/services/api-mongo.service';
 @Component({
   selector: 'app-product-container',
@@ -10,56 +10,23 @@ import { ApiMongoService } from '../shared/services/api-mongo.service';
 export class ProductContainerComponent {
   static ProductList:Product[] = [];
   productList:Product[] = [];
-  elgiganten_chart_product: any;
-  bilka_chart_product: any;
-  whiteaway_chart_product: any;
+  private subscription!: Subscription;
 
-
-  constructor(private apiMongoService: ApiMongoService) {}
-
-  async initCharts(collectionName: string, canvasId: string) {
-    const list = await this.apiMongoService.getChartStats(collectionName);
-    const chart = new Chart(canvasId, {
-      type: 'pie',
-      data: {
-        labels: ['Old', 'New', 'Invalid'],
-        datasets: [
-          {
-            label: '# of Votes',
-            data: list,
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-      },
-    });
-
-    return chart;
-  }
-
-  async ngOnInit() {
-    this.elgiganten_chart_product = await this.initCharts('elgiganten', 'elgiganten_canvas_product');
-    this.bilka_chart_product = await this.initCharts('bilka', 'bilka_canvas_product');
-    this.whiteaway_chart_product = await this.initCharts('whiteaway', 'whiteaway_canvas_product');
-  }
-
-  get staticProductList() { 
-    if(ProductContainerComponent.ProductList.length) {
-      this.productList = ProductContainerComponent.ProductList;
-      return "";
-    }
-    else {
-      return "";
-    }
-  }
 
   
+  constructor(private apiMongoService: ApiMongoService) {
+    this.subscription = this.apiMongoService.getProductList().subscribe((productList: Product[]) => {
+      this.productList = productList;
+      // Update charts or perform other actions based on the new productList
+    });
+  }
+
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 
   showInvalid(){
     this.hideAll()

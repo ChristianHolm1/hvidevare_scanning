@@ -8,9 +8,13 @@ import { ApiMongoService } from '../shared/services/api-mongo.service';
 })
 export class SidebarComponent {
   constructor(private apiMongoService: ApiMongoService) {}
-  param:string = 'elgiganten';
-
-  async callAPI(param:string) {
+  async dataToDashboard() {
+    await this.apiMongoService.getWebstoreProducts("elgiganten");
+    await this.apiMongoService.getWebstoreProducts("bilka");
+    await this.apiMongoService.getWebstoreProducts("whiteaway");
+  }
+  async callAPI(param: string) {
     await this.apiMongoService.getWebstoreProducts(param);
+    this.apiMongoService.sendProductList(); // Notify subscribers about the updated product list
   }
 }
