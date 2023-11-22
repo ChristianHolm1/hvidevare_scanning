@@ -1,4 +1,3 @@
-# main.py
 from scraper import Scraper
 import asyncio
 from datetime import datetime
@@ -127,7 +126,7 @@ async def main(website: str,concurrency_limit: int):
 
  
 
-    with open(f"{config['productdata_path']}_{current_date}.json", 'w') as file:
+    with open(f"{config['productdata_path']}_{timestamp}.json", 'w') as file:
         json.dump([content for content in scraped_data if content], file, indent=4)
 
 if __name__ == "__main__":
