@@ -8,7 +8,6 @@ import { ApiMongoService } from '../shared/services/api-mongo.service';
   styleUrls: ['./product-container.component.scss']
 })
 export class ProductContainerComponent {
-  static ProductList:Product[] = [];
   productList:Product[] = [];
   private subscription!: Subscription;
 
@@ -17,7 +16,7 @@ export class ProductContainerComponent {
   constructor(private apiMongoService: ApiMongoService) {
     this.subscription = this.apiMongoService.getProductList().subscribe((productList: Product[]) => {
       this.productList = productList;
-      // Update charts or perform other actions based on the new productList
+
     });
   }
 

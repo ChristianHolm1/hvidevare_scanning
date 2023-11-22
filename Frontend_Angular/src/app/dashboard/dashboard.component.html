@@ -15,8 +15,12 @@
             <p>16 timer</p>
         </div>
     </div>
-    
-    <div class="canvas-container">
-        <app-chart *ngFor="let chart of chartList" [chart]="chartList"></app-chart>
-    </div>
+
+        <div class="canvas-container" id="chartContainer">
+          <div *ngIf="chartList.length === websiteList.length">
+            <app-chart *ngFor="let chart of chartList" [chartConfig]="chart"></app-chart>
+          </div>
+        </div>
+      
+      
 </div>
