@@ -12,7 +12,7 @@ export class ChartComponent implements OnChanges, AfterViewInit {
   chartInstance: Chart | null = null;
   chartData: any[] = [];
   chartName: string = "";
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes["chartConfig"] && changes["chartConfig"].currentValue) {
       this.renderChart();
@@ -38,6 +38,7 @@ export class ChartComponent implements OnChanges, AfterViewInit {
         });
         this.chartData = this.chartConfig.data.datasets[0].data;
         this.chartName = this.chartConfig.data.datasets[0].label;
+        
       }
     }
   }
