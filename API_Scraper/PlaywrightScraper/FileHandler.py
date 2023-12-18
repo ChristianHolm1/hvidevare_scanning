@@ -2,8 +2,6 @@ import os
 import json
 
 class FileHandler:
-    def __init__(self, path_to_images):
-        self.path_to_images = path_to_images
     
     @staticmethod
     def load_json(filename):
@@ -13,6 +11,7 @@ class FileHandler:
                 return json.load(file)
         except Exception as e:
             print(e)
+            
     @staticmethod
     def save_json(data, filename):
         try:

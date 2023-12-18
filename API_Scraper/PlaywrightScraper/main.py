@@ -10,15 +10,15 @@ from MLDataHandler import MLDataHandler
 
 
 async def main(website: str,concurrency_limit: int):
-    path_to_images = f"API_Scraper/PlaywrightScraper/ProductData/{website}/Screenshots"
+    file_handler = FileHandler()
+    config_path = f'API_Scraper\PlaywrightScraper\Configs\{website}Config.json'
+    config = file_handler.load_json(config_path)
+    path_to_images = config['screenshot_path']
     ml_sender = MLDataHandler('http://localhost:8080/predict_images', path_to_images)
     database_url = f'http://localhost:8000/'
     database_handler = DatabaseHandler(website, database_url) 
-    file_handler = FileHandler(path_to_images)
     
     timestamp = datetime.now().strftime("%d-%m-%Y")
-    config_path = f'API_Scraper\PlaywrightScraper\Configs\{website}Config.json'
-    config = file_handler.load_json(config_path)
     productdata_path = f"{config['productdata_path']}_{timestamp}.json"
     
     scraper = Scraper(config)
@@ -51,7 +51,7 @@ async def main(website: str,concurrency_limit: int):
     
     await database_handler.process_data_to_db(data_to_db)
 
-    file_handler.delete_images_from_folder()
+    file_handler.delete_images_from_folder(path_to_images)
     
 
 if __name__ == "__main__":

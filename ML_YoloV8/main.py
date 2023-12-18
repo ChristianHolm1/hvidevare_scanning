@@ -2,10 +2,9 @@ from typing import List
 
 import uvicorn
 from ultralytics import YOLO
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, UploadFile, HTTPException
 from PIL import Image
 from io import BytesIO
-import json
 
 app = FastAPI()
 

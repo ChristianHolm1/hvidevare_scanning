@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 import motor.motor_asyncio
 import json
+import uvicorn
 from typing_extensions import Annotated
 from pydantic.functional_validators import BeforeValidator
 from pydantic import ConfigDict, BaseModel, Field
@@ -12,7 +13,7 @@ app = FastAPI(
 )
 
 # Load config
-with open('config.json') as config_file:
+with open('DB_Mongo/config.json') as config_file:
     config = json.load(config_file)
 
 # MongoDB client and dynamic database
@@ -107,3 +108,5 @@ async def add_products(collection_name: str, products: ProductCollection):
             detail=f"Failed to add products: {str(e)}"
         )
 
+if __name__ == '__main__':
+    uvicorn.run(app, host="0.0.0.0", port=8000)
