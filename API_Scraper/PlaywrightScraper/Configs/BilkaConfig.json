@@ -8,5 +8,5 @@
     "screenshot_path": "API_Scraper\\PlaywrightScraper\\ProductData\\Bilka\\Screenshots",
     "cookie_file": "API_Scraper\\PlaywrightScraper\\BrowserData\\Cookies\\bilkacookies.json",
     "load_state": "networkidle",
-    "productdata_path": "API_Scraper\\PlaywrightScraper\\ProductData\\Bilka\\Products\\BilkaScrapedProducts"
+    "productdata_path": "API_Scraper\\PlaywrightScraper\\ProductData\\Bilka\\Products\\BilkaProducts"
 }

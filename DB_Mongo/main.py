@@ -61,7 +61,7 @@ async def list_products(collection_name: str):
         raise HTTPException(status_code=404, detail="Collection not found")
     
     product_collection = db[collection_name]
-    products = await product_collection.find().to_list(1000)
+    products = await product_collection.find().to_list(10000)
     return ProductCollection(products=products)
   
 @app.delete("/{collection_name}/")
@@ -72,9 +72,38 @@ async def delete_products(collection_name: str):
     product_collection = db[collection_name]
     await product_collection.delete_many({})
 
+from fastapi import HTTPException
+
 @app.post("/{collection_name}/")
 async def add_products(collection_name: str, products: ProductCollection):
-    product_collection = db[collection_name]
-    product_dicts = [product.model_dump(by_alias=True, exclude_none=True) for product in products.products]
-    await product_collection.insert_many(product_dicts)
-    return JSONResponse(status_code=201, content={"message": "Products added successfully"})
+    try:
+        product_collection = db[collection_name]
+        product_dicts = [
+            product.model_dump(by_alias=True, exclude_none=True) 
+            for product in products.products
+        ]
+        
+        if not product_dicts:
+            raise HTTPException(status_code=400, detail="No products provided")
+
+        # Insert data into the database
+        result = await product_collection.insert_many(product_dicts)
+
+        # Check if all items were inserted successfully
+        if result.inserted_ids and len(result.inserted_ids) == len(product_dicts):
+            return JSONResponse(
+                status_code=201,
+                content={"message": "Products added successfully"}
+            )
+        else:
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to add all products to the database"
+            )
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to add products: {str(e)}"
+        )
+

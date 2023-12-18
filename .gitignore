@@ -54,4 +54,6 @@ DB_Mongo/__pycache__/main.cpython-312.pyc
 DB_Mongo/__pycache__/main.cpython-312.pyc
 API_Scraper/PlaywrightScraper/ProductData/Elgiganten/Screenshots
 API_Scraper/PlaywrightScraper/ProductData/Bilka/Screenshots
+API_Scraper/PlaywrightScraper/ProductData/Elgiganten/Products
+API_Scraper/PlaywrightScraper/ProductData/Bilka/Products
 
