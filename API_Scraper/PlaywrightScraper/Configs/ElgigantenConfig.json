@@ -8,5 +8,5 @@
     "screenshot_path": "API_Scraper\\PlaywrightScraper\\ProductData\\Elgiganten\\Screenshots",
     "cookie_file": "API_Scraper\\PlaywrightScraper\\BrowserData\\Cookies\\elgigantencookies.json",
     "load_state": "networkidle",
-    "productdata_path": "API_Scraper\\PlaywrightScraper\\ProductData\\Elgiganten\\Products\\scraped_data"
+    "productdata_path": "API_Scraper\\PlaywrightScraper\\ProductData\\Elgiganten\\Products\\ElgigantenProducts"
 }
