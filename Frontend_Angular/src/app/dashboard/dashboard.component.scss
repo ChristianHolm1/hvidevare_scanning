@@ -17,14 +17,11 @@
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 4px;
-    justify-content: space-between;
-
+    justify-content: space-around;
+    flex-direction: row;
 }
 
-canvas {
-    width: 500px !important;
-    height: 500px !important;
-}
+
 
 .stats-container {
     display: flex;

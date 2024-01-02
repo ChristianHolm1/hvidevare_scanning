@@ -26,7 +26,8 @@ export class ApiMongoService {
             product.varenummer,
             product.product_img,
             product.url,
-            product.productLabel
+            product.productLabel,
+            getProductLabel(product.energy_rating, product.productLabel)
           )
         );
       }
@@ -50,4 +51,17 @@ export class ApiMongoService {
   }
 
   
+}
+function getProductLabel(energy_rating: string, productLabel: string): string {
+  const labelsFolderPath = 'small_product_labels';
+  const validLabels = ['NewLabel', 'OldLabel'];
+  
+  if (validLabels.includes(productLabel)) {
+      const labelType = productLabel;
+      const imageName = `${energy_rating.charAt(0).toUpperCase()}${energy_rating.slice(1)}.png`;
+      return `assets/${labelsFolderPath}/${labelType}/${imageName}`;
+  } else {
+      // Return path for 'invalid' label
+      return `assets/${labelsFolderPath}/invalid/invalid.png`;
+  }
 }

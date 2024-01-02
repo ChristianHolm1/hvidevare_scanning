@@ -3,14 +3,16 @@
     <h2>{{ product.price }}</h2>
     <div id="image-container">
 
-        <img *ngIf="product.productLabel != 'No eng img available'" [src]="product.productLabel" alt="EnergyLable" height="40px" id="energy-lable">
-        <a href="{{product.url}}" target="_blank"><img [src]="product.product_img" alt="Product image" width="250px" id="product-image"></a>
+        <img *ngIf="product.productLabel_img != 'No eng img available'" [src]="product.productLabel_img" alt="EnergyLable" height="40px" id="energy-lable">
+        <a href="{{product.url}}" target="_blank">
+            <img [src]="product.product_img" alt="Product image" width="250px" id="product-image">
+        </a>
+        
 
     </div>
     
-    <!-- <h4>Specifications</h4>
+    <h4>Specifications</h4>
     <ul>
-        <li>{{ product.price }}</li>
-        <li>{{ product.rating}}</li>
-    </ul> -->
+        <li>Varenummer: {{ product.varenummer}}</li>
+    </ul>
 </div>

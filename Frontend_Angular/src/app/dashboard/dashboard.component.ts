@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   chartList: any[] = [];
   private subscription!: Subscription;
   productLists: any[] = [];
-  websiteList: string[] = ["elgiganten", "bilka", "whiteaway"];
+  websiteList: string[] = ["elgiganten", "bilka"];
   static locked: boolean = false;
 
   constructor(private apiMongoService: ApiMongoService) { }

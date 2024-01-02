@@ -34,10 +34,13 @@ export class ChartComponent implements OnChanges, AfterViewInit {
         this.chartInstance = new Chart(ctx, {
           type: this.chartConfig.type,
           data: this.chartConfig.data,
-          options: this.chartConfig.options // Include options if needed
+          options: {
+            responsive: false // Disables responsiveness
+        }
         });
         this.chartData = this.chartConfig.data.datasets[0].data;
         this.chartName = this.chartConfig.data.datasets[0].label;
+        
         
       }
     }

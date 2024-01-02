@@ -16,11 +16,9 @@
         </div>
     </div>
 
-        <div class="canvas-container" id="chartContainer">
-          <div *ngIf="chartList.length === websiteList.length">
-            <app-chart *ngFor="let chart of chartList" [chartConfig]="chart"></app-chart>
-          </div>
-        </div>
-      
-      
+    <div class="canvas-container" id="chartContainer" *ngIf="chartList.length === websiteList.length">
+        <app-chart *ngFor="let chart of chartList" [chartConfig]="chart"></app-chart>
+    </div>
+    
+
 </div>
