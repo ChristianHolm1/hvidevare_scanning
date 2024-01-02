@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 import motor.motor_asyncio
 import json
 import uvicorn
@@ -11,7 +12,19 @@ from typing import Optional, List
 app = FastAPI(
     title="Webstore DB API"
 )
-
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace with the list of allowed origins or "*" to allow all
+    allow_credentials=True,
+    allow_methods=["*"],  # Replace with the list of HTTP methods you want to allow
+    allow_headers=["*"],  # Replace with the list of allowed headers or "*" to allow all
+)
 # Load config
 with open('DB_Mongo/config.json') as config_file:
     config = json.load(config_file)

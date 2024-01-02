@@ -1,21 +1,23 @@
 @import '../shared/styles/variables.scss';
 
 #result-container {
-    margin-top: 90px;
     .result-container {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        gap: 10px;
+        gap: 1rem;
         @media (max-width: 700px) {
             flex-direction: column;
         }
     }
 }
-
+* {
+    color: black;
+}
 app-product {
-    background-color: $custom-secondary;
-    border: 1px solid $custom-accent;
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 5px #00000050;
     padding: 10px;
     border-radius: 4px;
     flex: auto;
@@ -30,14 +32,11 @@ app-product {
         width: auto;
     }
 }
-.valid {
-    background-color: $custom-secondary;
-}
 .old {
-    background-color: yellow;
+    background-color: #fcc46875;
 }
 .invalid {
-    background-color: red;
+    background-color: #f17e5d75;
 }
 
 .visable{
@@ -48,16 +47,51 @@ app-product {
 }
 
 .filter-button{
-    margin: 0px 20px 10px 0px;
-    padding: 10px;
+    margin: 0px 1rem 1rem 0px;
+    padding: 1rem;
     border-radius: 4px;
-    //border: 1px solid $custom-accent;
-    background-color: $custom-primary;
-    color: white;
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 5px #00000050;
+    border: none;
     cursor: pointer;
     &:hover{
-        background-color: $custom-primary;
-        opacity: 0.9;
+        background-color: #00000010;
     }
-    
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.canvas-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background-color: white;
+    box-shadow: 0 0 5px #00000050;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    justify-content: space-between;
+
+}
+.canvas-item {
+    h2 {
+        text-align: center;
+    }
+}
+
+
+.stats-container {
+    display: flex;
+    gap: 1rem;
+}
+.stats-item {
+    background-color: white;
+    box-shadow: 0 0 5px #00000050;
+    padding: 1rem;
+    border-radius: 4px;
+    width: 100%;
 }

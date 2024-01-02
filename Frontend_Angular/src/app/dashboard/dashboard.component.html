@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div class="stats-container">
+        <div class="stats-item">
+            <h2>Total websites</h2>
+            <p>{{websiteList.length}}</p>
+        </div>
+        <div class="stats-item">
+            <h2>Total energimærker</h2>
+            <p>New: {{totalNew}}</p>
+            <p>Old: {{totalOld}}</p>
+            <p>Invalid: {{totalInvalid}}</p>
+        </div>
+        <div class="stats-item">
+            <h2>Sidste scrape</h2>
+            <p>16 timer</p>
+        </div>
+    </div>
+
+    <div class="canvas-container" id="chartContainer" *ngIf="chartList.length === websiteList.length">
+        <app-chart *ngFor="let chart of chartList" [chartConfig]="chart"></app-chart>
+    </div>
+    
+
+</div>

@@ -1,13 +1,15 @@
-{{ staticProductList }}
 
+<app-chart *ngIf="chartDone" [chartConfig]="chartConfig"></app-chart>
 <div id="result-container">
-    <div *ngIf="productList.length">
+    <div *ngIf="productList.length" class="filter-buttons">
         <button class="filter-button" (click)="showAll()">All</button>
-        <button class="filter-button" (click)="showValid()">Only show valid</button>
-        <button class="filter-button" (click)="showOld()">Only show old</button>
-        <button class="filter-button" (click)="showInvalid()">Only show invalid</button>
+        <button class="filter-button" (click)="showInvalid()">Show invalid labels</button>
+        <button class="filter-button" (click)="showOldLabel()">Show old labels</button>
+        <button class="filter-button" (click)="showNewLabel()">Show new labels</button>
     </div>
+    
     <div class="result-container">
         <app-product *ngFor="let product of productList" [product]="product"></app-product>
     </div>
+
 </div>
