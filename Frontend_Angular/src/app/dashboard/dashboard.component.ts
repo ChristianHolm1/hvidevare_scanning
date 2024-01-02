@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     const chartConfig = {
       type: 'pie', // Example chart type (adjust as needed)
       data: {
-        labels: ['NewLabel', 'OldLabel', 'Invalid'],
+        labels: ['Nye', 'Gamle', 'Ikke valide'],
         datasets: [{
           label: website,
           data: productData,

@@ -2,8 +2,8 @@
 <div class="canvas-item">
     <h1>{{chartName}}</h1>
     <canvas #chartCanvas></canvas>
-    <h1>{{chartData[0]/(chartData[0]+chartData[1]+chartData[2])*100 | number: '1.0-2'}}% er new</h1>
-    <h1>{{chartData[1]/(chartData[0]+chartData[1]+chartData[2])*100| number: '1.0-2'}}% er old</h1>
-    <h1>{{chartData[2]/(chartData[0]+chartData[1]+chartData[2])*100| number: '1.0-2'}}% er invalid</h1>
+    <h2>{{chartData[0]/(chartData[0]+chartData[1]+chartData[2])*100 | number: '1.0-2'}}% af produkterne har nye energimærker</h2>
+    <h2>{{chartData[1]/(chartData[0]+chartData[1]+chartData[2])*100| number: '1.0-2'}}% af produkterne har gamle energimærker</h2>
+    <h2>{{chartData[2]/(chartData[0]+chartData[1]+chartData[2])*100| number: '1.0-2'}}% af produkterne har ikke energimærker</h2>
     
 </div>
