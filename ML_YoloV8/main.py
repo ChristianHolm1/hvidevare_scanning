@@ -12,7 +12,6 @@ app = FastAPI()
 PATH_TO_MODEL = "ML_YoloV8/best.pt"
 model = YOLO(PATH_TO_MODEL)
 
-
 @app.post("/predict_images")
 async def predict_images(images: List[UploadFile]):
     if not images:
@@ -52,3 +51,5 @@ def predict_with_image(image):
 
 if __name__ == '__main__':
     uvicorn.run(app, host="0.0.0.0", port=8080)
+
+
