@@ -15,7 +15,7 @@ The project comprises several components:
 - **Machine Learning Validation**:
   - Utilizes FastAPI and a pre-trained object detection model based on YOLO via the Ultralytics framework.
   - Screenshots are processed by the model to determine adherence to EU energy label laws:
-    - Identifies if it's a new EU energy label, a pre-2019 label, or no label detected.
+    - Identifies if it's a new EU energy label, a pre-2021 label, or no label detected.
   - Information, along with previously collected data, is saved to a MongoDB database.
 
 - **Database**:
